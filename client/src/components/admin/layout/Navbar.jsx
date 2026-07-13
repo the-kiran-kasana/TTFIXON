@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { MdMailOutline, MdKeyboardArrowDown, MdPerson, MdSettings, MdLogout, MdChat } from "react-icons/md";
-import { useSidebar } from "../../context/SidebarContext";
+import { useSidebar } from "../../../context/admin/SidebarContext";
 
 export default function Navbar() {
     const { collapsed } = useSidebar();
@@ -62,7 +62,7 @@ export default function Navbar() {
                             <div className="max-h-96 overflow-y-auto">
                                 {/* Sample messages */}
                                 <Link
-                                    href="/messages"
+                                    href="/admin/messages"
                                     // className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors border-b border-gray-100"
                                     // onClick={() => setShowMessages(false)}
                                 >
@@ -77,7 +77,7 @@ export default function Navbar() {
                                 </Link>
 
                                 <Link
-                                    href="/messages"
+                                    href="/admin/messages"
                                     // className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors border-b border-gray-100"
                                     onClick={() => setShowMessages(false)}
                                 >
@@ -92,7 +92,7 @@ export default function Navbar() {
                                 </Link>
 
                                 <Link
-                                    href="/messages"
+                                    href="/admin/messages"
                                     //className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
                                     onClick={() => setShowMessages(false)}
                                 >
@@ -107,7 +107,7 @@ export default function Navbar() {
                                 </Link>
                             </div>
                             <Link
-                                href="/messages"
+                                href="/admin/messages"
                                 className="block px-4 py-3 text-center text-sm text-blue-600 hover:bg-gray-50 font-medium border-t border-gray-200"
                                 onClick={() => setShowMessages(false)}
                             >
@@ -153,7 +153,7 @@ export default function Navbar() {
                             
                             <div className="py-1">
                                 <Link
-                                    href="/profile"
+                                    href="/admin/profile"
                                     className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
                                     onClick={() => setShowProfile(false)}
                                 >
@@ -162,7 +162,7 @@ export default function Navbar() {
                                 </Link>
                                 
                                 <Link
-                                    href="/settings"
+                                    href="/admin/settings"
                                     className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
                                     onClick={() => setShowProfile(false)}
                                 >

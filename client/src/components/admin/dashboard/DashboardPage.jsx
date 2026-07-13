@@ -1,15 +1,15 @@
 "use client";
 
-// import WeatherWidget from "../../components/dashboard/WeatherWidget";
-import StatCards from "../../components/dashboard/StatCards";
-import QuickStats from "../../components/dashboard/QuickStats";
-import RevenueChart from "../../components/dashboard/RevenueChart";
-import BookingStatusChart from "../../components/dashboard/BookingStatusChart";
-import ServiceDistribution from "../../components/dashboard/ServiceDistribution";
-import ProviderPerformance from "../../components/dashboard/ProviderPerformance";
-import KeyMetrics from "../../components/dashboard/KeyMetrics";
-import RecentBookings from "../../components/dashboard/RecentBookings";
-// import AlertsFeed from "../../components/dashboard/AlertsFeed";
+// import WeatherWidget from "./WeatherWidget";
+import StatCards from "./StatCards";
+import QuickStats from "./QuickStats";
+import RevenueChart from "./RevenueChart";
+import BookingStatusChart from "./BookingStatusChart";
+import ServiceDistribution from "./ServiceDistribution";
+import ProviderPerformance from "./ProviderPerformance";
+import KeyMetrics from "./KeyMetrics";
+import RecentBookings from "./RecentBookings";
+// import AlertsFeed from "./AlertsFeed";
 
 export default function Dashboard() {
   return (
@@ -18,7 +18,7 @@ export default function Dashboard() {
       {/* Page Title */}
       <div>
         <h1 style={{ fontSize: "24px", fontWeight: 700, color: "#0f172a" }}>Dashboard</h1>
-        <p style={{ fontSize: "14px", color: "#94a3b8", marginTop: "2px" }}>Welcome back, Admin. Here's what's happening today.</p>
+        <p style={{ fontSize: "14px", color: "#94a3b8", marginTop: "2px" }}>Welcome back, Admin. Here&apos;s what&apos;s happening today.</p>
       </div>
 
       {/* Weather
@@ -54,4 +54,3 @@ export default function Dashboard() {
     </div>
   );
 }
-

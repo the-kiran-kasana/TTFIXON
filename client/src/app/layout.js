@@ -1,10 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-import Navbar from "../components/Navbar/Navbar";
-import Sidebar from "../components/Sidebar/Sidebar";
-import MainContent from "../components/MainContent/MainContent";
-import { SidebarProvider } from "../context/SidebarContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "On Demand Dashboard",
-  description: "Admin Dashboard",
+  title: "On Demand",
+  description: "Book trusted home services.",
 };
 
 export default function RootLayout({ children }) {
@@ -30,13 +26,7 @@ export default function RootLayout({ children }) {
       <head>
       </head>
 
-      <body className="h-screen overflow-hidden bg-gray-100">
-        <SidebarProvider>
-          <Navbar />
-          <Sidebar />
-          <MainContent>{children}</MainContent>
-        </SidebarProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
