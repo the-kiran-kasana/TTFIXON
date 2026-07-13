@@ -1,6 +1,6 @@
 "use client";
 
-import { useSidebar } from "../../context/SidebarContext";
+import { useSidebar } from "../../../context/admin/SidebarContext";
 
 export default function MainContent({ children }) {
     const { collapsed } = useSidebar();

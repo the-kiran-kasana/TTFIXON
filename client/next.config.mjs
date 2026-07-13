@@ -1,7 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
   reactCompiler: true,
+  async rewrites() {
+    return [
+      { source: "/", destination: "/user" },
+      { source: "/admin-dashboard", destination: "/admin/dashboard" },
+    ];
+  },
 };
 
 export default nextConfig;

@@ -23,7 +23,7 @@ export default function EmployeeList() {
           <h1 style={{ fontSize:'24px', fontWeight:'700', color:'#0f172a', margin:0 }}>Employee List</h1>
           <p style={{ color:'#64748b', margin:'4px 0 0', fontSize:'14px' }}>Manage your admin team members</p>
         </div>
-        <a href="/add-new-employee" style={{ background:'#6366f1', color:'#fff', border:'none', borderRadius:'8px', padding:'10px 20px', fontWeight:'600', fontSize:'14px', cursor:'pointer', textDecoration:'none' }}>+ Add Employee</a>
+        <a href="/admin/add-new-employee" style={{ background:'#6366f1', color:'#fff', border:'none', borderRadius:'8px', padding:'10px 20px', fontWeight:'600', fontSize:'14px', cursor:'pointer', textDecoration:'none' }}>+ Add Employee</a>
       </div>
 
       {/* Stats */}
