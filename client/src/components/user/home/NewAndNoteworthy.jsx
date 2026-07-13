@@ -16,7 +16,7 @@ export default function NewAndNoteworthy() {
           <Link key={item.id} href="#" className="group w-[190px] shrink-0">
             <div className="relative flex aspect-square items-center justify-center rounded-2xl bg-gradient-to-br from-gray-100 to-gray-200 text-5xl">
               {item.badge && (
-                <span className="absolute left-0 top-3 rounded-r-md bg-violet-700 px-2 py-1 text-[10px] font-bold uppercase text-white">
+                <span className="absolute left-0 top-3 rounded-r-md bg-gray-900 px-2 py-1 text-[10px] font-bold uppercase text-white">
                   {item.badge}
                 </span>
               )}

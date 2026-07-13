@@ -15,7 +15,7 @@ export default function SectionHeader({ title, subtitle, seeAllHref }) {
       {seeAllHref && (
         <Link
           href={seeAllHref}
-          className="shrink-0 text-sm font-semibold text-violet-600 hover:text-violet-700"
+          className="shrink-0 text-sm font-semibold text-gray-900 underline-offset-4 hover:underline"
         >
           See all
         </Link>
