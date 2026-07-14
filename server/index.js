@@ -4,6 +4,8 @@ require("dotenv").config();
 
 const { connectDB } = require("./config/db");
 const authRoutes = require("./routes/auth.route");
+const userRoutes = require("./routes/user.route");
+const otpAuthRoutes = require("./routes/otpAuth.route");
 const { errorHandler, notFound } = require("./middleware/errorHandler");
 
 const app = express();
@@ -31,7 +33,9 @@ app.get("/", (req, res) => {
   res.status(200).json({ msg: "Welcome to on demand" });
 });
 
-app.use("/api/auth", authRoutes);
+app.use("/api/auth", authRoutes); // admin auth (email + password)
+app.use("/api/user-auth", otpAuthRoutes); // customer auth (phone + OTP)
+app.use("/api/users", userRoutes); // admin-managed customers
 
 /* -------------------- ERROR HANDLING -------------------- */
 

@@ -54,7 +54,7 @@ export default function Footer() {
 
         <div className="mt-10 border-t border-gray-100 pt-6 text-xs text-gray-400">
           <p>* As on December 31, 2024</p>
-          <p className="mt-1">
+          <p className="mt-1" suppressHydrationWarning>
             © {new Date().getFullYear()} On Demand. All rights reserved.
           </p>
         </div>

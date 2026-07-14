@@ -27,3 +27,16 @@ export const adminAuthApi = {
     apiRequest("/auth/login", { method: "POST", body: { email, password } }),
   me: (token) => apiRequest("/auth/me", { token }),
 };
+
+export const customersApi = {
+  list: (token, params = {}) => {
+    const qs = new URLSearchParams(
+      Object.entries(params).filter(([, v]) => v !== undefined && v !== "")
+    ).toString();
+    return apiRequest(`/users${qs ? `?${qs}` : ""}`, { token });
+  },
+  create: (token, body) =>
+    apiRequest("/users", { method: "POST", body, token }),
+  update: (token, id, body) =>
+    apiRequest(`/users/${id}`, { method: "PATCH", body, token }),
+};

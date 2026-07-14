@@ -43,7 +43,7 @@ export default function Header() {
 
         {/* account + cart */}
         <Link
-          href="/user/login"
+          href="/user/account"
           className="hidden rounded-lg p-2 text-gray-600 hover:bg-gray-100 sm:block"
           aria-label="Account"
         >
