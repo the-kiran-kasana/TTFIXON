@@ -3,21 +3,25 @@ import { useState } from "react";
 import { MdSearch, MdVisibility, MdFileDownload } from "react-icons/md";
 
 const transactions = [
-  { id: "#TXN8821", type: "Payment", party: "Rahul Sharma", amount: "₹4,500", gateway: "Razorpay", status: "Success", date: "15 Jan 2025" },
-  { id: "#TXN8820", type: "Refund", party: "Priya Mehta", amount: "₹850", gateway: "UPI", status: "Processed", date: "15 Jan 2025" },
-  { id: "#TXN8819", type: "Payout", party: "Suresh Kumar", amount: "₹3,200", gateway: "Bank Transfer", status: "Pending", date: "14 Jan 2025" },
-  { id: "#TXN8818", type: "Commission", party: "System", amount: "₹480", gateway: "Internal", status: "Success", date: "14 Jan 2025" },
-  { id: "#TXN8817", type: "Payment", party: "Amit Verma", amount: "₹1,200", gateway: "Card", status: "Failed", date: "14 Jan 2025" },
-  { id: "#TXN8816", type: "Payout", party: "Raj Plumbing Co.", amount: "₹2,100", gateway: "Bank Transfer", status: "Success", date: "13 Jan 2025" },
-  { id: "#TXN8815", type: "Payment", party: "Sneha Patel", amount: "₹12,000", gateway: "Razorpay", status: "Success", date: "13 Jan 2025" },
-  { id: "#TXN8814", type: "Refund", party: "Karan Nair", amount: "₹600", gateway: "UPI", status: "Processed", date: "12 Jan 2025" },
+  { id: "#TXN8821", type: "Payment",  party: "Rahul Sharma",    amount: "₹4,500",  gateway: "Razorpay",     status: "Success",   date: "15 Jan 2025" },
+  { id: "#TXN8820", type: "Refund",   party: "Priya Mehta",     amount: "₹850",    gateway: "UPI",          status: "Processed", date: "15 Jan 2025" },
+  { id: "#TXN8819", type: "Payout",   party: "Suresh Kumar",    amount: "₹3,200",  gateway: "Bank Transfer",status: "Pending",   date: "14 Jan 2025" },
+  { id: "#TXN8818", type: "Commission",party: "System",          amount: "₹480",    gateway: "Internal",     status: "Success",   date: "14 Jan 2025" },
+  { id: "#TXN8817", type: "Payment",  party: "Amit Verma",      amount: "₹1,200",  gateway: "Card",         status: "Failed",    date: "14 Jan 2025" },
+  { id: "#TXN8816", type: "Payout",   party: "Raj Plumbing Co.",amount: "₹2,100",  gateway: "Bank Transfer",status: "Success",   date: "13 Jan 2025" },
+  { id: "#TXN8815", type: "Payment",  party: "Sneha Patel",     amount: "₹12,000", gateway: "Razorpay",     status: "Success",   date: "13 Jan 2025" },
+  { id: "#TXN8814", type: "Refund",   party: "Karan Nair",      amount: "₹600",    gateway: "UPI",          status: "Processed", date: "12 Jan 2025" },
+  { id: "#TXN8813", type: "Withdraw", party: "Ravi Kumar",       amount: "₹8,450",  gateway: "Bank Transfer",status: "Success",   date: "12 Jan 2025" },
+  { id: "#TXN8812", type: "Withdraw", party: "Priya Sharma",     amount: "₹12,200", gateway: "Bank Transfer",status: "Pending",   date: "11 Jan 2025" },
+  { id: "#TXN8811", type: "Withdraw", party: "Deepak Singh",     amount: "₹5,600",  gateway: "Bank Transfer",status: "Pending",   date: "11 Jan 2025" },
 ];
 
 const typeColors = {
-  Payment: { background: "#dbeafe", color: "#2563eb" },
-  Refund: { background: "#fee2e2", color: "#dc2626" },
-  Payout: { background: "#f3e8ff", color: "#7c3aed" },
+  Payment:    { background: "#dbeafe", color: "#2563eb" },
+  Refund:     { background: "#fee2e2", color: "#dc2626" },
+  Payout:     { background: "#f3e8ff", color: "#7c3aed" },
   Commission: { background: "#fef9c3", color: "#ca8a04" },
+  Withdraw:   { background: "#dcfce7", color: "#16a34a" },
 };
 
 const statusColors = {
@@ -38,6 +42,13 @@ export default function AllTransactionsPage() {
   const [search, setSearch] = useState("");
   const [type, setType] = useState("All");
   const card = { background: "#fff", borderRadius: 12, padding: 24, boxShadow: "0 1px 3px rgba(0,0,0,0.08)", border: "1px solid #f1f5f9" };
+
+  const filtered = transactions.filter((t) => {
+    const matchesType = type === "All" || t.type === type;
+    const matchesSearch = t.id.toLowerCase().includes(search.toLowerCase()) ||
+      t.party.toLowerCase().includes(search.toLowerCase());
+    return matchesType && matchesSearch;
+  });
 
   return (
     <div style={{}}>
@@ -67,7 +78,7 @@ export default function AllTransactionsPage() {
             style={{ width: "100%", padding: "10px 12px 10px 34px", border: "1px solid #e2e8f0", borderRadius: 8, fontSize: 14, outline: "none", boxSizing: "border-box" }} />
         </div>
         <select value={type} onChange={(e) => setType(e.target.value)} style={{ padding: "10px 12px", border: "1px solid #e2e8f0", borderRadius: 8, fontSize: 14, outline: "none", background: "#fff" }}>
-          {["All", "Payment", "Refund", "Payout", "Commission"].map((t) => <option key={t}>{t}</option>)}
+          {["All", "Payment", "Refund", "Payout", "Commission", "Withdraw"].map((t) => <option key={t}>{t}</option>)}
         </select>
         <input type="date" style={{ padding: "10px 12px", border: "1px solid #e2e8f0", borderRadius: 8, fontSize: 14, outline: "none" }} />
         <input type="date" style={{ padding: "10px 12px", border: "1px solid #e2e8f0", borderRadius: 8, fontSize: 14, outline: "none" }} />
@@ -86,7 +97,7 @@ export default function AllTransactionsPage() {
             </tr>
           </thead>
           <tbody>
-            {transactions.map((t) => (
+            {filtered.map((t) => (
               <tr key={t.id} style={{ borderBottom: "1px solid #f8fafc" }}>
                 <td style={{ padding: "14px 12px", fontSize: 14, fontWeight: 600, color: "#6366f1" }}>{t.id}</td>
                 <td style={{ padding: "14px 12px" }}>
