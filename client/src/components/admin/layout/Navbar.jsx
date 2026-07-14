@@ -3,13 +3,23 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { MdMailOutline, MdKeyboardArrowDown, MdPerson, MdSettings, MdLogout, MdChat } from "react-icons/md";
 import { useSidebar } from "../../../context/admin/SidebarContext";
+import { useAdminAuth } from "@/context/admin/AuthContext";
 
 export default function Navbar() {
     const { collapsed } = useSidebar();
+    const { admin, logout } = useAdminAuth();
+    const router = useRouter();
     const [showMessages, setShowMessages] = useState(false);
     const [showProfile, setShowProfile] = useState(false);
+
+    const handleLogout = () => {
+        setShowProfile(false);
+        logout();
+        router.replace("/admin/login");
+    };
     
     const messagesRef = useRef(null);
     const profileRef = useRef(null);
@@ -147,8 +157,13 @@ export default function Navbar() {
                             style={{ top: "100%" }}
                         >
                             <div className="px-4 py-3 border-b border-gray-200 bg-gray-50">
-                                <p className="text-sm font-semibold text-gray-900">Admin User</p>
-                                <p className="text-xs text-gray-500">admin@ondemand.com</p>
+                                <p className="text-sm font-semibold text-gray-900">{admin?.name || "Admin User"}</p>
+                                <p className="text-xs text-gray-500">{admin?.email || "admin@ondemand.com"}</p>
+                                {admin?.role && (
+                                    <span className="mt-1 inline-block rounded bg-blue-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-blue-700">
+                                        {admin.role}
+                                    </span>
+                                )}
                             </div>
                             
                             <div className="py-1">
@@ -174,10 +189,7 @@ export default function Navbar() {
                             <div className="border-t border-gray-200">
                                 <button
                                     className="flex items-center gap-3 w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
-                                    onClick={() => {
-                                        setShowProfile(false);
-                                        // Add logout logic here
-                                    }}
+                                    onClick={handleLogout}
                                 >
                                     <MdLogout className="text-lg" />
                                     Logout
