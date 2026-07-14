@@ -19,23 +19,19 @@ export const HERO_IMAGES = [
 export const SPOTLIGHT = [
   {
     id: "leak-repair",
-    tag: "Popular",
-    tagTone: "bg-sky-100 text-sky-700",
+    tag: null,
     title: "Fix leaks before they get worse",
     subtitle: "Plumbing repair",
     cta: "Book now",
-    bg: "bg-[#e6f4fb]",
-    emoji: "🚰",
+    img: "/images/spotlight/Plumbing repair.jpg",
   },
   {
     id: "switchboard-repair",
-    tag: "Quick service",
-    tagTone: "bg-amber-100 text-amber-700",
+    tag: null,
     title: "Safe switchboard repair at your doorstep",
     subtitle: "Electrician service",
     cta: "Book now",
-    bg: "bg-[#fff3d9]",
-    emoji: "⚡",
+    img: "/images/spotlight/Electrician service.jpg",
   },
   {
     id: "bathroom-fitting",
@@ -43,25 +39,25 @@ export const SPOTLIGHT = [
     title: "Install new taps and bathroom fittings",
     subtitle: "Plumbing installation",
     cta: "Book now",
-    bg: "bg-[#e8f6f4]",
-    emoji: "🔧",
+    img: "/images/spotlight/bathroom fittings.jpg",
   },
 ];
 
 export const NOTEWORTHY = [
-  { id: "emergency-plumber", label: "Emergency plumbing", badge: "Popular", emoji: "🚰" },
-  { id: "fan-installation", label: "Ceiling fan installation", emoji: "🌀" },
-  { id: "tap-repair", label: "Tap & mixer repair", emoji: "🚿" },
-  { id: "socket-repair", label: "Socket & switch repair", emoji: "🔌" },
-  { id: "drain-cleaning", label: "Drain blockage repair", emoji: "🪠" },
+  { id: "emergency-plumber", label: "Emergency plumbing", badge: "Popular", img: "/images/New_noteworthy/Emergency plumbing.jpg" },
+  { id: "fan-installation", label: "Ceiling fan installation", img: "/images/New_noteworthy/Ceiling fan installation.jpg" },
+  { id: "tap-repair", label: "Tap & mixer repair", img: "/images/New_noteworthy/Tap & mixer repair.jpg" },
+  { id: "socket-repair", label: "Socket & switch repair", img: "/images/New_noteworthy/Socket & switch repair.jpg" },
+  { id: "drain-cleaning", label: "Drain blockage repair", img: "/images/New_noteworthy/Drain blockage repair.jpg" },
+  { id: "wiring-repair", label: "Switchboard & wiring", img: "/images/New_noteworthy/Switchboard & wiring.jpg" },
 ];
 
 export const MOST_BOOKED = [
-  { id: "mb1", name: "Plumber visit", rating: 4.8, price: 99, emoji: "🚰" },
-  { id: "mb2", name: "Electrician visit", rating: 4.78, price: 99, instant: true, emoji: "⚡" },
-  { id: "mb3", name: "Tap & mixer repair", rating: 4.76, price: 149, emoji: "🚿" },
-  { id: "mb4", name: "Fan installation", rating: 4.82, price: 199, instant: true, emoji: "🌀" },
-  { id: "mb5", name: "Drain blockage repair", rating: 4.75, price: 199, emoji: "🪠" },
+  { id: "mb1", name: "Plumber visit", rating: 4.8, price: 99, img: "/images/Most_booked_services/Plumber visit.jpg" },
+  { id: "mb2", name: "Electrician visit", rating: 4.78, price: 99, instant: true, img: "/images/Most_booked_services/Electrician visit.jpg" },
+  { id: "mb3", name: "Tap & mixer repair", rating: 4.76, price: 149, img: "/images/Most_booked_services/Tap & mixer repair.jpg" },
+  { id: "mb4", name: "Fan installation", rating: 4.82, price: 199, instant: true, img: "/images/Most_booked_services/Fan installation.jpg" },
+  { id: "mb5", name: "Drain blockage repair", rating: 4.75, price: 199, img: "/images/Most_booked_services/Drain blockage repair.jpg" },
 ];
 
 export const BANNERS = {

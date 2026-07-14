@@ -12,16 +12,24 @@ import PriceTag from "../common/PriceTag";
  * @param {string} [props.href]
  */
 export default function ServiceCard({ service, href = "#" }) {
-  const { name, rating, price, mrp, instant, emoji } = service;
+  const { name, rating, price, mrp, instant, emoji, img } = service;
   return (
     <Link
       href={href}
       className="group flex w-[calc((100%-64px)/5)] min-w-[168px] shrink-0 flex-col sm:min-w-[190px]"
     >
       <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-gradient-to-br from-gray-100 to-gray-200">
-        <span className="absolute inset-0 flex items-center justify-center text-5xl transition group-hover:scale-105">
-          {emoji}
-        </span>
+        {img ? (
+          <img
+            src={encodeURI(img)}
+            alt={name}
+            className="absolute inset-0 h-full w-full object-cover transition group-hover:scale-105"
+          />
+        ) : (
+          <span className="absolute inset-0 flex items-center justify-center text-5xl transition group-hover:scale-105">
+            {emoji}
+          </span>
+        )}
         {instant && (
           <span className="absolute left-2 top-2 inline-flex items-center gap-1 rounded-md bg-white/90 px-1.5 py-0.5 text-[10px] font-semibold text-gray-700 shadow-sm">
             <Zap size={10} className="fill-gray-900 text-gray-900" /> Instant
