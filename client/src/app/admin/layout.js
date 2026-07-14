@@ -11,7 +11,7 @@ export default function AdminLayout({ children }) {
   const isLoginPage = pathname === "/admin/login";
 
   return (
-    <StoreProvider>
+    <ReduxProvider>
       <AdminAuthProvider>
         {isLoginPage ? (
           children
@@ -21,6 +21,6 @@ export default function AdminLayout({ children }) {
           </AdminAuthGuard>
         )}
       </AdminAuthProvider>
-    </StoreProvider>
+    </ReduxProvider>
   );
 }

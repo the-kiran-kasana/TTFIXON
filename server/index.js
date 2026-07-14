@@ -4,8 +4,10 @@ require("dotenv").config();
 
 const { connectDB } = require("./config/db");
 const authRoutes = require("./routes/auth.route");
-const userRoutes = require("./routes/user.route");
-const otpAuthRoutes = require("./routes/otpAuth.route");
+const vendorRoutes = require("./routes/vendor.route");
+const servicemanRoutes = require("./routes/serviceman.route");
+const zoneRoutes = require("./routes/zone.route");
+const categoryRoutes = require("./routes/category.route");
 const { errorHandler, notFound } = require("./middleware/errorHandler");
 
 const app = express();
@@ -33,9 +35,11 @@ app.get("/", (req, res) => {
   res.status(200).json({ msg: "Welcome to on demand" });
 });
 
-app.use("/api/auth", authRoutes); // admin auth (email + password)
-app.use("/api/user-auth", otpAuthRoutes); // customer auth (phone + OTP)
-app.use("/api/users", userRoutes); // admin-managed customers
+app.use("/api/auth",       authRoutes);
+app.use("/api/vendors",    vendorRoutes);
+app.use("/api/servicemen", servicemanRoutes);
+app.use("/api/zones",      zoneRoutes);
+app.use("/api/categories", categoryRoutes);
 
 /* -------------------- ERROR HANDLING -------------------- */
 
