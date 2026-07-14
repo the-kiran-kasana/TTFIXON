@@ -10,16 +10,14 @@ import { TOP_NAV, CURRENT_ADDRESS } from "../../data/homeData";
 export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-gray-100 bg-white">
-      <div className="mx-auto flex max-w-[1200px] items-center gap-4 px-4 py-3">
+      <div className="mx-auto flex max-w-[1400px] items-center gap-4 px-4 py-3">
         {/* logo */}
-        <Link href="/user" className="flex items-center gap-2">
-          <span className="flex h-8 w-8 items-center justify-center rounded-md bg-gray-900 text-sm font-bold text-white">
-            UC
+        <Link href="/user" className="flex items-center">
+          <span className="rounded-md bg-gray-900 px-2 py-1 text-[17px] font-black leading-none tracking-tight text-white">
+            on
           </span>
-          <span className="hidden text-sm font-bold leading-tight text-gray-900 sm:block">
-            Urban
-            <br />
-            Company
+          <span className="ml-1 text-[19px] font-black lowercase leading-none tracking-tight text-gray-900">
+            demand
           </span>
         </Link>
 
