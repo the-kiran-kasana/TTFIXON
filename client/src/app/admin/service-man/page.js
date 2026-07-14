@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 
-const providers = [
+const serviceMen = [
   { name: 'Ravi Kumar', category: 'Plumbing', rating: 4.8, jobs: 142, revenue: '₹84,200', status: 'Verified' },
   { name: 'Suresh Nair', category: 'Electrical', rating: 4.5, jobs: 98, revenue: '₹62,500', status: 'Verified' },
   { name: 'Deepak Singh', category: 'Painting', rating: 4.2, jobs: 56, revenue: '₹1,23,000', status: 'Pending' },
@@ -25,7 +25,7 @@ function Stars({ rating }) {
   );
 }
 
-export default function ProvidersPage() {
+export default function ServicePage() {
   const [search, setSearch] = useState('');
   const [statusFilter, setStatusFilter] = useState('All');
 
@@ -37,7 +37,7 @@ export default function ProvidersPage() {
     border: '1px solid #f1f5f9',
   };
 
-  const filtered = providers.filter(p => {
+  const filtered = serviceMen.filter(p => {
     const matchSearch = p.name.toLowerCase().includes(search.toLowerCase()) || p.category.toLowerCase().includes(search.toLowerCase());
     const matchStatus = statusFilter === 'All' || p.status === statusFilter;
     return matchSearch && matchStatus;
@@ -47,18 +47,18 @@ export default function ProvidersPage() {
     <div style={{ fontFamily: 'Inter, sans-serif' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
         <div>
-          <h1 style={{ fontSize: '24px', fontWeight: '700', color: '#0f172a', margin: 0 }}>Service Providers</h1>
-          <p style={{ color: '#64748b', margin: '4px 0 0', fontSize: '14px' }}>Manage all registered service providers</p>
+          <h1 style={{ fontSize: '24px', fontWeight: '700', color: '#0f172a', margin: 0 }}>Service Man</h1>
+          <p style={{ color: '#64748b', margin: '4px 0 0', fontSize: '14px' }}>Manage all registered service men</p>
         </div>
         <button style={{ background: '#6366f1', color: '#fff', border: 'none', borderRadius: '8px', padding: '10px 20px', fontWeight: '600', fontSize: '14px', cursor: 'pointer' }}>
-          + Add Provider
+          + Add service man
         </button>
       </div>
 
       <div style={card}>
         <div style={{ display: 'flex', gap: '12px', marginBottom: '20px' }}>
           <input
-            placeholder="Search providers..."
+            placeholder="Search service men..."
             value={search}
             onChange={e => setSearch(e.target.value)}
             style={{ padding: '9px 14px', border: '1px solid #e2e8f0', borderRadius: '8px', fontSize: '14px', width: '260px', outline: 'none' }}
@@ -75,7 +75,7 @@ export default function ProvidersPage() {
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead>
             <tr style={{ borderBottom: '2px solid #f1f5f9' }}>
-              {['Provider Name', 'Category', 'Rating', 'Total Jobs', 'Revenue', 'Status', 'Actions'].map(h => (
+              {['Service Man Name', 'Category', 'Rating', 'Total Jobs', 'Revenue', 'Status', 'Actions'].map(h => (
                 <th key={h} style={{ textAlign: 'left', padding: '10px 12px', fontSize: '12px', fontWeight: '600', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{h}</th>
               ))}
             </tr>

@@ -2,49 +2,98 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { MdChevronLeft, MdChevronRight, MdExpandMore, MdExpandLess } from "react-icons/md";
 import { useSidebar } from "../../../context/admin/SidebarContext";
 import {
     MdDashboard, MdCalendarMonth, MdPercent, MdConfirmationNumber,
     MdAccountBalanceWallet, MdCampaign, MdAdsClick, MdPhotoLibrary,
-    MdNotifications, MdHowToReg, MdHandyman, MdPayments, MdMap,
+    MdNotifications, MdHowToReg, MdHandyman, MdMap,
     MdCategory, MdHomeRepairService, MdGroup, MdWallet, MdStar,
     MdSubscriptions, MdManageAccounts, MdBadge, MdPersonAdd,
     MdReceiptLong, MdBarChart, MdAnalytics, MdGavel, MdFolder,
+    MdStorefront, MdAccountBalance, MdPayments,
 } from "react-icons/md";
 
+// Regular nav items
 const navItems = [
     { href: "/admin-dashboard",               label: "Dashboard",               Icon: MdDashboard,            color: "#60a5fa" },
     { href: "/admin/booking",                 label: "Booking",                 Icon: MdCalendarMonth,        color: "#4ade80" },
-    { href: "/admin/discount",                label: "Discount",                Icon: MdPercent,              color: "#fb923c" },
-    { href: "/admin/coupons",                 label: "Coupons",                 Icon: MdConfirmationNumber,   color: "#f472b6" },
+    { href: "/admin/services",                label: "Services",                Icon: MdHomeRepairService,    color: "#fdba74" },
+    { href: "/admin/service-man",             label: "Service Man",             Icon: MdHandyman,             color: "#a3e635" },
+    { href: "/admin/service-vendor",          label: "Service Vendor",          Icon: MdStorefront,           color: "#fb923c" },
+    { href: "/admin/services-zone-setup",     label: "Services Zone Setup",     Icon: MdMap,                  color: "#38bdf8" },
+    { href: "/admin/customers",               label: "Customers",               Icon: MdGroup,                color: "#93c5fd" },
+    { href: "/admin/customer-wallet",         label: "Customer Wallet",         Icon: MdWallet,               color: "#fde047" },
+    { href: "/admin/categories",              label: "Categories",              Icon: MdCategory,             color: "#a78bfa" },
+    { href: "/admin/employee-list",           label: "Employee List",           Icon: MdBadge,                color: "#86efac" },
+    { href: "/admin/employee-role-setup",     label: "Employee Role Setup",     Icon: MdManageAccounts,       color: "#818cf8" },
+    { href: "/admin/add-new-employee",        label: "Add New Employee",        Icon: MdPersonAdd,            color: "#67e8f9" },
+    { href: "/admin/loyalty-point",           label: "Loyalty Point",           Icon: MdStar,                 color: "#facc15" },
+    { href: "/admin/subscription-management", label: "Subscription Management", Icon: MdSubscriptions,        color: "#fb7185" },
+];
+
+// Items rendered after the Transactions group
+const navItemsAfter = [
+    { href: "/admin/reports",                 label: "Reports",                 Icon: MdBarChart,             color: "#f9a8d4" },
+    { href: "/admin/analytics",               label: "Analytics",               Icon: MdAnalytics,            color: "#5eead4" },
+    { href: "/admin/legal-pages",             label: "Legal Pages",             Icon: MdGavel,                color: "#fca5a5" },
     { href: "/admin/wallet-bonus",            label: "Wallet Bonus",            Icon: MdAccountBalanceWallet, color: "#facc15" },
     { href: "/admin/campaigns",               label: "Campaigns",               Icon: MdCampaign,             color: "#f87171" },
     { href: "/admin/advertisements",          label: "Advertisements",          Icon: MdAdsClick,             color: "#c084fc" },
     { href: "/admin/promotional-banners",     label: "Promotional Banners",     Icon: MdPhotoLibrary,         color: "#22d3ee" },
     { href: "/admin/send-notifications",      label: "Send Notification",       Icon: MdNotifications,        color: "#fbbf24" },
     { href: "/admin/onboarding-request",      label: "Onboarding Request",      Icon: MdHowToReg,             color: "#2dd4bf" },
-    { href: "/admin/providers",               label: "Providers",               Icon: MdHandyman,             color: "#a3e635" },
-    { href: "/admin/withdraws",               label: "Withdraws",               Icon: MdPayments,             color: "#34d399" },
-    { href: "/admin/services-zone-setup",     label: "Services Zone Setup",     Icon: MdMap,                  color: "#38bdf8" },
-    { href: "/admin/categories",              label: "Categories",              Icon: MdCategory,             color: "#a78bfa" },
-    { href: "/admin/services",                label: "Services",                Icon: MdHomeRepairService,    color: "#fdba74" },
-    { href: "/admin/customers",               label: "Customers",               Icon: MdGroup,                color: "#93c5fd" },
-    { href: "/admin/customer-wallet",         label: "Customer Wallet",         Icon: MdWallet,               color: "#fde047" },
-    { href: "/admin/loyalty-point",           label: "Loyalty Point",           Icon: MdStar,                 color: "#facc15" },
-    { href: "/admin/subscription-management", label: "Subscription Management", Icon: MdSubscriptions,        color: "#fb7185" },
-    { href: "/admin/employee-role-setup",     label: "Employee Role Setup",     Icon: MdManageAccounts,       color: "#818cf8" },
-    { href: "/admin/employee-list",           label: "Employee List",           Icon: MdBadge,                color: "#86efac" },
-    { href: "/admin/add-new-employee",        label: "Add New Employee",        Icon: MdPersonAdd,            color: "#67e8f9" },
-    { href: "/admin/all-transactions",        label: "All Transactions",        Icon: MdReceiptLong,          color: "#d8b4fe" },
-    { href: "/admin/reports",                 label: "Reports",                 Icon: MdBarChart,             color: "#f9a8d4" },
-    { href: "/admin/analytics",               label: "Analytics",              Icon: MdAnalytics,            color: "#5eead4" },
-    { href: "/admin/legal-pages",             label: "Legal Pages",             Icon: MdGavel,                color: "#fca5a5" },
+    { href: "/admin/discount",                label: "Discount",                Icon: MdPercent,              color: "#fb923c" },
+    { href: "/admin/coupons",                 label: "Coupons",                 Icon: MdConfirmationNumber,   color: "#f472b6" },
     { href: "/admin/file-manager",            label: "File Manager",            Icon: MdFolder,               color: "#fcd34d" },
 ];
 
+// Transaction sub-items
+const transactionChildren = [
+    { href: "/admin/all-transactions", label: "All Transactions", Icon: MdReceiptLong,  color: "#d8b4fe" },
+    { href: "/admin/withdraws",        label: "Withdraw",         Icon: MdAccountBalance, color: "#34d399" },
+];
+
+function NavLink({ href, label, Icon, color, collapsed, indent = false }) {
+    const pathname = usePathname();
+    const isActive = pathname === href;
+    return (
+        <Link
+            href={href}
+            title={collapsed ? label : ""}
+            className="flex items-center py-3 transition-colors hover:bg-[#334155] mx-2 rounded-lg"
+            style={{
+                justifyContent: collapsed ? "center" : "flex-start",
+                paddingLeft: collapsed ? "0" : indent ? "36px" : "24px",
+                paddingRight: collapsed ? "0" : "16px",
+                background: isActive ? "#1e293b" : "transparent",
+            }}
+        >
+            <Icon size={indent ? 18 : 22} color={color} style={{ flexShrink: 0 }} />
+            {!collapsed && (
+                <span style={{
+                    color: isActive ? "#ffffff" : "#cbd5e1",
+                    fontSize: indent ? "13px" : "15px",
+                    fontWeight: indent ? "400" : "500",
+                    marginLeft: "14px",
+                    whiteSpace: "nowrap",
+                }}>
+                    {label}
+                </span>
+            )}
+        </Link>
+    );
+}
+
 export default function Sidebar() {
     const { collapsed, toggle } = useSidebar();
+    const pathname = usePathname();
+
+    // Auto-open the group if we're on a transaction page
+    const isOnTransaction = transactionChildren.some(c => pathname === c.href);
+    const [txOpen, setTxOpen] = useState(isOnTransaction);
 
     return (
         <aside
@@ -62,7 +111,7 @@ export default function Sidebar() {
                 paddingLeft: "12px",
                 paddingRight: "12px",
                 background: "#000000",
-                overflow: "visible"
+                overflow: "visible",
             }}>
                 {!collapsed && (
                     <Image
@@ -89,7 +138,7 @@ export default function Sidebar() {
                         color: "#ffffff",
                         cursor: "pointer",
                         flexShrink: 0,
-                        zIndex: 100
+                        zIndex: 100,
                     }}
                 >
                     {collapsed ? (
@@ -103,26 +152,51 @@ export default function Sidebar() {
             {/* Nav Links */}
             <div className="flex-1 overflow-y-auto sidebar-right-scroll">
                 <nav className="py-4">
-                    {navItems.map(({ href, label, Icon, color }) => (
-                        <Link
-                            key={href}
-                            href={href}
-                            title={collapsed ? label : ""}
-                            className="flex items-center py-3 transition-colors hover:bg-[#334155] mx-2 rounded-lg"
-                            style={{
-                                justifyContent: collapsed ? "center" : "flex-start",
-                                paddingLeft: collapsed ? "0" : "24px",
-                                paddingRight: collapsed ? "0" : "16px",
-                            }}
-                        >
-                            <Icon size={22} color={color} style={{ flexShrink: 0 }} />
-                            {!collapsed && (
-                                <span style={{ color: "#ffffff", fontSize: "15px", fontWeight: "500", marginLeft: "14px", whiteSpace: "nowrap" }}>
-                                    {label}
-                                </span>
-                            )}
-                        </Link>
+
+                    {/* Regular items before Transactions */}
+                    {navItems.map(item => (
+                        <NavLink key={item.href} {...item} collapsed={collapsed} />
                     ))}
+
+                    {/* ── Transactions Group ── */}
+                    <button
+                        onClick={() => { if (!collapsed) setTxOpen(o => !o); }}
+                        title={collapsed ? "Transactions" : ""}
+                        className="flex items-center w-full py-3 transition-colors hover:bg-[#334155] mx-2 rounded-lg"
+                        style={{
+                            width: "calc(100% - 16px)",
+                            justifyContent: collapsed ? "center" : "flex-start",
+                            paddingLeft: collapsed ? "0" : "24px",
+                            paddingRight: collapsed ? "0" : "16px",
+                            background: isOnTransaction ? "#1e293b" : "transparent",
+                            border: "none",
+                            cursor: "pointer",
+                        }}
+                    >
+                        <MdPayments size={22} color="#d8b4fe" style={{ flexShrink: 0 }} />
+                        {!collapsed && (
+                            <>
+                                <span style={{ color: "#cbd5e1", fontSize: "15px", fontWeight: "500", marginLeft: "14px", whiteSpace: "nowrap", flex: 1, textAlign: "left" }}>
+                                    Transactions
+                                </span>
+                                {txOpen
+                                    ? <MdExpandLess size={18} color="#94a3b8" />
+                                    : <MdExpandMore size={18} color="#94a3b8" />
+                                }
+                            </>
+                        )}
+                    </button>
+
+                    {/* Sub-items — shown when expanded (or always show icons when collapsed) */}
+                    {(txOpen || collapsed) && transactionChildren.map(item => (
+                        <NavLink key={item.href} {...item} collapsed={collapsed} indent={!collapsed} />
+                    ))}
+
+                    {/* Items after Transactions */}
+                    {navItemsAfter.map(item => (
+                        <NavLink key={item.href} {...item} collapsed={collapsed} />
+                    ))}
+
                 </nav>
             </div>
         </aside>
