@@ -16,7 +16,7 @@ export default function ServiceCard({ service, href = "#" }) {
   return (
     <Link
       href={href}
-      className="group flex w-[168px] shrink-0 flex-col sm:w-[190px]"
+      className="group flex w-[calc((100%-64px)/5)] min-w-[168px] shrink-0 flex-col sm:min-w-[190px]"
     >
       <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-gradient-to-br from-gray-100 to-gray-200">
         <span className="absolute inset-0 flex items-center justify-center text-5xl transition group-hover:scale-105">

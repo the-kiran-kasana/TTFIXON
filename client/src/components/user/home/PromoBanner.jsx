@@ -2,7 +2,7 @@ import { BANNERS } from "../data/homeData";
 
 /**
  * PromoBanner — reusable full-width promo strip.
- * Drives Wall Panels, Native Smart Locks, Home painting, RO purifier.
+ * Drives electrician and plumbing promotions.
  *
  * @param {object} props
  * @param {string} props.id  key into BANNERS (homeData)

@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { Search, MapPin, ShoppingCart, ChevronDown, User } from "lucide-react";
-import { TOP_NAV, CURRENT_ADDRESS } from "../../data/homeData";
+import { CURRENT_ADDRESS } from "../../data/homeData";
 
 /**
- * Header — sticky top bar: logo, primary nav, location, search, cart, account.
+ * Header — sticky top bar: brand, location, search, cart, account.
  */
 export default function Header() {
   return (
@@ -14,27 +14,12 @@ export default function Header() {
         {/* logo */}
         <Link href="/user" className="flex items-center gap-2">
           <span className="flex h-8 w-8 items-center justify-center rounded-md bg-gray-900 text-sm font-bold text-white">
-            UC
+            OD
           </span>
           <span className="hidden text-sm font-bold leading-tight text-gray-900 sm:block">
-            Urban
-            <br />
-            Company
+            On Demand
           </span>
         </Link>
-
-        {/* primary nav */}
-        <nav className="hidden items-center gap-5 pl-2 lg:flex">
-          {TOP_NAV.map((item) => (
-            <Link
-              key={item}
-              href="#"
-              className="text-sm font-medium text-gray-600 hover:text-gray-900"
-            >
-              {item}
-            </Link>
-          ))}
-        </nav>
 
         {/* location */}
         <button className="ml-auto hidden max-w-[220px] items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-700 hover:border-gray-300 md:flex">
@@ -51,7 +36,7 @@ export default function Header() {
           />
           <input
             type="text"
-            placeholder="Search for 'Kitchen cleaning'"
+            placeholder="Search for 'Electrician'"
             className="w-full rounded-lg border border-gray-200 py-2 pl-9 pr-3 text-sm outline-none focus:border-gray-400"
           />
         </div>

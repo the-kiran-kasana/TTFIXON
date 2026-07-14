@@ -40,7 +40,7 @@ export default function Carousel({ children, step = 320, className = "" }) {
         type="button"
         aria-label="Scroll right"
         onClick={() => scrollBy(1)}
-        className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 rounded-full border border-gray-200 bg-white p-2 shadow-md transition hover:bg-gray-50 group-hover:md:flex"
+        className="absolute right-1 top-1/2 z-10 hidden -translate-y-1/2 rounded-full border border-gray-200 bg-white p-2 shadow-md transition hover:bg-gray-50 group-hover:md:flex"
       >
         <ChevronRight size={18} />
       </button>

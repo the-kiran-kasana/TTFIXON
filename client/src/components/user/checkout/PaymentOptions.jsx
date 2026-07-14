@@ -14,7 +14,7 @@ import { Smartphone, CreditCard, Wallet, Banknote, Check } from "lucide-react";
 const METHODS = [
   { key: "upi", label: "UPI", desc: "GPay, PhonePe, Paytm & more", icon: Smartphone },
   { key: "card", label: "Credit / Debit card", desc: "Visa, Mastercard, RuPay", icon: CreditCard },
-  { key: "wallet", label: "Wallet", desc: "Use your UC balance", icon: Wallet },
+  { key: "wallet", label: "Wallet", desc: "Use your OD balance", icon: Wallet },
   { key: "cod", label: "Pay after service", desc: "Cash / online after the job", icon: Banknote },
 ];
 
