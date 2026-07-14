@@ -13,7 +13,11 @@ export default function NewAndNoteworthy() {
       </h2>
       <Carousel>
         {NOTEWORTHY.map((item) => (
-          <Link key={item.id} href="#" className="group w-[190px] shrink-0">
+          <Link
+            key={item.id}
+            href="#"
+            className="group w-[calc((100%-64px)/5)] min-w-[190px] shrink-0"
+          >
             <div className="relative flex aspect-square items-center justify-center rounded-2xl bg-gradient-to-br from-gray-100 to-gray-200 text-5xl">
               {item.badge && (
                 <span className="absolute left-0 top-3 rounded-r-md bg-gray-900 px-2 py-1 text-[10px] font-bold uppercase text-white">

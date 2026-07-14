@@ -4,7 +4,7 @@ import { RAILS } from "../data/homeData";
 
 /**
  * CategoryRailSection — reusable "title + See all + horizontal card rail".
- * Drives Cleaning Essentials, Appliance repair, Home repair, Massage for Men.
+ * Drives Electrical, Plumbing, Home Repair, and Emergency service rails.
  *
  * @param {object} props
  * @param {string} props.railKey  key into RAILS (homeData)

@@ -6,7 +6,7 @@ import { CATEGORY_TILES } from "../data/homeData";
  */
 export default function CategoryTiles() {
   return (
-    <div className="flex flex-col gap-3">
+    <div className="grid grid-cols-2 gap-3">
       {CATEGORY_TILES.map((cat) => (
         <Link
           key={cat.id}

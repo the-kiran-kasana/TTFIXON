@@ -14,7 +14,7 @@ export default function SpotlightSection() {
         {SPOTLIGHT.map((card) => (
           <article
             key={card.id}
-            className={`flex w-[300px] shrink-0 items-center gap-4 rounded-2xl p-5 ${card.bg} sm:w-[340px]`}
+            className={`flex w-[calc((100%-32px)/3)] min-w-[300px] shrink-0 items-center gap-4 rounded-2xl p-5 ${card.bg}`}
           >
             <div className="flex-1">
               {card.tag && (

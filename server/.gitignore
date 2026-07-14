@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+package-lock.json
+# Environment variables
+.env.local
+.env.*.local
+.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Coverage
+coverage/
+
+# Temporary files
+tmp/
+temp/
+
+# WhatsApp session and cache (whatsapp-web.js)
+whatsapp-session/
+.wwebjs_cache/
+.wwebjs_auth/
+
+package-lock.json
+
+uploads/
+.idea/
+
+.DS_Store
+

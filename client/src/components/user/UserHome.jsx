@@ -7,7 +7,7 @@ import PromoBanner from "./home/PromoBanner";
 
 /**
  * UserHome — the customer landing page. Composes homepage sections in order,
- * mirroring the Urban Company Delhi-NCR layout.
+ * for electrician and plumbing services.
  */
 export default function UserHome() {
   return (
@@ -17,17 +17,17 @@ export default function UserHome() {
       <NewAndNoteworthy />
       <MostBookedSection />
 
-      <PromoBanner id="wall-panels" />
-      <PromoBanner id="native-locks" />
+      <PromoBanner id="emergency-plumbing" />
+      <PromoBanner id="electrical-safety" />
 
-      <CategoryRailSection railKey="cleaning-essentials" />
-      <PromoBanner id="home-painting" />
+      <CategoryRailSection railKey="plumbing-services" />
+      <PromoBanner id="bathroom-plumbing" />
 
-      <CategoryRailSection railKey="appliance-repair" />
+      <CategoryRailSection railKey="electrical-services" />
       <CategoryRailSection railKey="home-repair" />
-      <CategoryRailSection railKey="massage-men" />
+      <CategoryRailSection railKey="emergency-help" />
 
-      <PromoBanner id="ro-purifier" />
+      <PromoBanner id="electrical-installation" />
     </div>
   );
 }
