@@ -11,20 +11,21 @@ import PromoBanner from "./home/PromoBanner";
  */
 export default function UserHome() {
   return (
-    <div className="mx-auto max-w-[1400px] space-y-12 px-4 py-6">
+    <div className="mx-auto max-w-[1400px] space-y-24 px-4 py-10">
       <HeroSection />
       <SpotlightSection />
+
+      <PromoBanner id="emergency-plumbing" />
+
       <NewAndNoteworthy />
       <MostBookedSection />
 
-      <PromoBanner id="emergency-plumbing" />
       <PromoBanner id="electrical-safety" />
 
       <CategoryRailSection railKey="plumbing-services" />
       <PromoBanner id="bathroom-plumbing" />
 
       <CategoryRailSection railKey="electrical-services" />
-      <CategoryRailSection railKey="home-repair" />
       <CategoryRailSection railKey="emergency-help" />
 
       <PromoBanner id="electrical-installation" />
