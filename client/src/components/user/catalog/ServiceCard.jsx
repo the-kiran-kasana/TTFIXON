@@ -24,7 +24,7 @@ export default function ServiceCard({ service, href = "#" }) {
         </span>
         {instant && (
           <span className="absolute left-2 top-2 inline-flex items-center gap-1 rounded-md bg-white/90 px-1.5 py-0.5 text-[10px] font-semibold text-gray-700 shadow-sm">
-            <Zap size={10} className="fill-amber-400 text-amber-400" /> Instant
+            <Zap size={10} className="fill-gray-900 text-gray-900" /> Instant
           </span>
         )}
       </div>

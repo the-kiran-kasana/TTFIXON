@@ -10,7 +10,7 @@ import { CURRENT_ADDRESS } from "../../data/homeData";
 export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-gray-100 bg-white">
-      <div className="mx-auto flex max-w-[1200px] items-center gap-4 px-4 py-3">
+      <div className="mx-auto flex max-w-[1400px] items-center gap-4 px-4 py-3">
         {/* logo */}
         <Link href="/user" className="flex items-center gap-2">
           <span className="flex h-8 w-8 items-center justify-center rounded-md bg-gray-900 text-sm font-bold text-white">
