@@ -1,5 +1,5 @@
 "use client";
-import { MdCheck, MdClose, MdVisibility, MdFilePresent } from "react-icons/md";
+import { Check, X, Eye, FileCheck, Clock, CheckCircle2, XCircle, ClipboardList } from "lucide-react";
 
 const requests = [
   { name: "Vikram Malhotra", initials: "VM", category: "Painting", location: "Mumbai", applied: "15 Jan 2025", docs: 4, kyc: "Pending" },
@@ -18,10 +18,10 @@ const kycColors = {
 const avatarColors = ["#6366f1", "#f59e0b", "#10b981", "#ef4444", "#3b82f6", "#8b5cf6"];
 
 const stats = [
-  { label: "Pending", value: "14", icon: "⏳", color: "#f59e0b" },
-  { label: "Approved Today", value: "3", icon: "✅", color: "#10b981" },
-  { label: "Rejected", value: "2", icon: "❌", color: "#ef4444" },
-  { label: "Total This Month", value: "22", icon: "📋", color: "#6366f1" },
+  { label: "Pending",         value: "14", Icon: Clock,          color: "#f59e0b", bg: "#fffbeb" },
+  { label: "Approved Today",  value: "3",  Icon: CheckCircle2,   color: "#10b981", bg: "#ecfdf5" },
+  { label: "Rejected",        value: "2",  Icon: XCircle,        color: "#ef4444", bg: "#fef2f2" },
+  { label: "Total This Month",value: "22", Icon: ClipboardList,  color: "#6366f1", bg: "#eef2ff" },
 ];
 
 export default function OnboardingRequestPage() {
@@ -42,7 +42,9 @@ export default function OnboardingRequestPage() {
                 <p style={{ fontSize: 13, color: "#94a3b8", margin: 0, fontWeight: 600 }}>{s.label}</p>
                 <p style={{ fontSize: 28, fontWeight: 700, color: s.color, margin: "4px 0 0" }}>{s.value}</p>
               </div>
-              <div style={{ fontSize: 32 }}>{s.icon}</div>
+              <div style={{ width: 44, height: 44, borderRadius: 10, background: s.bg, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <s.Icon size={20} color={s.color} />
+              </div>
             </div>
           </div>
         ))}
@@ -73,7 +75,7 @@ export default function OnboardingRequestPage() {
                 <td style={{ padding: "14px 12px", fontSize: 14, color: "#475569" }}>{r.applied}</td>
                 <td style={{ padding: "14px 12px" }}>
                   <button style={{ display: "flex", alignItems: "center", gap: 6, background: "#f1f5f9", border: "none", borderRadius: 6, padding: "6px 12px", cursor: "pointer", fontSize: 13, color: "#475569", fontWeight: 600 }}>
-                    <MdFilePresent size={15} color="#6366f1" /> {r.docs} files
+                    <FileCheck size={15} color="#6366f1" /> {r.docs} files
                   </button>
                 </td>
                 <td style={{ padding: "14px 12px" }}>
@@ -81,12 +83,12 @@ export default function OnboardingRequestPage() {
                 </td>
                 <td style={{ padding: "14px 12px" }}>
                   <div style={{ display: "flex", gap: 8 }}>
-                    <button style={{ background: "#f1f5f9", border: "none", borderRadius: 6, padding: 6, cursor: "pointer", color: "#6366f1" }}><MdVisibility size={15} /></button>
+                    <button style={{ background: "#f1f5f9", border: "none", borderRadius: 6, padding: 6, cursor: "pointer", color: "#6366f1" }}><Eye size={15} /></button>
                     <button style={{ background: "#dcfce7", border: "none", borderRadius: 6, padding: "6px 12px", cursor: "pointer", color: "#16a34a", fontSize: 12, fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
-                      <MdCheck size={14} /> Approve
+                      <Check size={14} /> Approve
                     </button>
                     <button style={{ background: "#fee2e2", border: "none", borderRadius: 6, padding: "6px 12px", cursor: "pointer", color: "#dc2626", fontSize: 12, fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
-                      <MdClose size={14} /> Reject
+                      <X size={14} /> Reject
                     </button>
                   </div>
                 </td>

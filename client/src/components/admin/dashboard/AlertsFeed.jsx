@@ -1,9 +1,11 @@
 "use client";
+import { AlertTriangle, XCircle, Info } from "lucide-react";
 
 const alerts = [
   {
     type: "warning",
-    icon: "⚠️",
+    Icon: AlertTriangle,
+    iconColor: "#92400e",
     title: "High Cancellation Rate",
     message: "Cancellation rate increased by 1.2% in the last 24 hours.",
     time: "10 min ago",
@@ -13,7 +15,8 @@ const alerts = [
   },
   {
     type: "error",
-    icon: "🔴",
+    Icon: XCircle,
+    iconColor: "#991b1b",
     title: "Payment Gateway Error",
     message: "3 transactions failed due to payment gateway timeout.",
     time: "25 min ago",
@@ -23,7 +26,8 @@ const alerts = [
   },
   {
     type: "info",
-    icon: "ℹ️",
+    Icon: Info,
+    iconColor: "#1e40af",
     title: "New Provider Onboarded",
     message: "Kiran Electricals has completed onboarding and is now live.",
     time: "1 hr ago",
@@ -45,7 +49,7 @@ export default function AlertsFeed() {
             background: a.bg, borderRadius: "8px",
             borderLeft: `4px solid ${a.border}`
           }}>
-            <span style={{ fontSize: "18px", flexShrink: 0 }}>{a.icon}</span>
+            <a.Icon size={18} color={a.iconColor} style={{ flexShrink: 0, marginTop: "2px" }} />
             <div style={{ flex: 1 }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2px" }}>
                 <p style={{ fontSize: "13px", fontWeight: 700, color: a.color }}>{a.title}</p>

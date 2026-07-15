@@ -8,7 +8,7 @@ import { FOOTER_COLUMNS } from "../../data/homeData";
 export default function Footer() {
   return (
     <footer className="mt-16 border-t border-gray-100 bg-white">
-      <div className="mx-auto max-w-[1400px] px-4 py-12">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {FOOTER_COLUMNS.map((col) => (
             <div key={col.title}>
@@ -54,7 +54,7 @@ export default function Footer() {
 
         <div className="mt-10 border-t border-gray-100 pt-6 text-xs text-gray-400">
           <p>* As on December 31, 2024</p>
-          <p className="mt-1">
+          <p className="mt-1" suppressHydrationWarning>
             © {new Date().getFullYear()} On Demand. All rights reserved.
           </p>
         </div>

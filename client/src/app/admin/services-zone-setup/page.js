@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Map, CheckCircle, PauseCircle, Trash2 } from 'lucide-react';
 import { fetchZones, fetchZoneStats, createZone, updateZone, deleteZone, clearActionState } from '@/store/slices/zoneSlice';
 import { useAdminAuth } from '@/context/admin/AuthContext';
 
@@ -112,7 +113,7 @@ function ConfirmDeleteModal({ zone, onClose, onConfirm, loading }) {
     <div style={{ position: 'fixed', inset: 0, zIndex: 1000, background: 'rgba(0,0,0,0.45)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}
       onClick={(e) => e.target === e.currentTarget && onClose()}>
       <div style={{ background: '#fff', borderRadius: '14px', maxWidth: '420px', width: '100%', padding: '28px', textAlign: 'center' }}>
-        <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: '#fef2f2', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '26px', margin: '0 auto 16px' }}>🗑️</div>
+        <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: '#fef2f2', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}><Trash2 size={26} color="#ef4444" /></div>
         <h3 style={{ fontSize: '17px', fontWeight: '700', color: '#0f172a', margin: '0 0 8px' }}>Delete Zone?</h3>
         <p style={{ color: '#64748b', fontSize: '14px', marginBottom: '22px' }}>Are you sure you want to delete <strong>{zone?.name}</strong>? This cannot be undone.</p>
         <div style={{ display: 'flex', gap: '10px' }}>
@@ -135,7 +136,7 @@ function Toast({ message, type, onClose }) {
   useEffect(() => { const t = setTimeout(onClose, 3500); return () => clearTimeout(t); }, [onClose]);
   return (
     <div style={{ position: 'fixed', bottom: '24px', right: '24px', zIndex: 2000, background: type === 'success' ? '#16a34a' : '#dc2626', color: '#fff', padding: '12px 20px', borderRadius: '10px', fontSize: '14px', fontWeight: '600', boxShadow: '0 4px 12px rgba(0,0,0,0.15)', display: 'flex', alignItems: 'center', gap: '10px' }}>
-      {type === 'success' ? '✅' : '❌'} {message}
+      {type === 'success' ? '' : ''} {message}
       <button onClick={onClose} style={{ background: 'none', border: 'none', color: '#fff', fontSize: '16px', cursor: 'pointer', marginLeft: '4px' }}>×</button>
     </div>
   );
@@ -192,9 +193,9 @@ export default function ServiceZonesSetup() {
   };
 
   const statCards = [
-    { label: 'Total Zones',   value: stats.total,    icon: '🗺️', color: '#6366f1', bg: '#eef2ff' },
-    { label: 'Active Zones',  value: stats.active,   icon: '✅', color: '#10b981', bg: '#ecfdf5' },
-    { label: 'Inactive Zones',value: stats.inactive, icon: '⏸️', color: '#ef4444', bg: '#fef2f2' },
+    { label: 'Total Zones',    value: stats.total,    Icon: Map,         color: '#6366f1', bg: '#eef2ff' },
+    { label: 'Active Zones',   value: stats.active,   Icon: CheckCircle, color: '#10b981', bg: '#ecfdf5' },
+    { label: 'Inactive Zones', value: stats.inactive, Icon: PauseCircle, color: '#ef4444', bg: '#fef2f2' },
   ];
 
   return (
@@ -234,7 +235,9 @@ export default function ServiceZonesSetup() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '16px' }}>
         {statCards.map((s) => (
           <div key={s.label} style={{ ...card, display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <div style={{ width: '44px', height: '44px', borderRadius: '10px', background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px' }}>{s.icon}</div>
+            <div style={{ width: '44px', height: '44px', borderRadius: '10px', background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <s.Icon size={20} color={s.color} />
+            </div>
             <div>
               <p style={{ fontSize: '12px', color: '#64748b', margin: 0 }}>{s.label}</p>
               <p style={{ fontSize: '22px', fontWeight: '700', color: s.color, margin: '2px 0 0' }}>{statsLoading ? '—' : s.value}</p>
@@ -242,7 +245,7 @@ export default function ServiceZonesSetup() {
           </div>
         ))}
         <div style={{ ...card, display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <input placeholder="🔍 Search zones…" value={search} onChange={(e) => setSearch(e.target.value)}
+          <input placeholder="Search zones…" value={search} onChange={(e) => setSearch(e.target.value)}
             style={{ padding: '8px 12px', border: '1px solid #e2e8f0', borderRadius: '8px', fontSize: '13px', outline: 'none', flex: 1 }} />
           <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}
             style={{ padding: '8px 10px', border: '1px solid #e2e8f0', borderRadius: '8px', fontSize: '13px', outline: 'none', color: '#475569', background: '#fff', cursor: 'pointer' }}>
@@ -272,7 +275,7 @@ export default function ServiceZonesSetup() {
               style={{ ...card, cursor: 'pointer', borderLeft: `4px solid ${selected?._id === z._id ? '#6366f1' : 'transparent'}`, background: selected?._id === z._id ? '#eef2ff' : '#fff', padding: '16px 20px', transition: 'all 0.15s' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div>
-                  <p style={{ fontWeight: '700', color: '#0f172a', margin: 0, fontSize: '14px' }}>📍 {z.name}</p>
+                <p style={{ fontWeight: '700', color: '#0f172a', margin: 0, fontSize: '14px' }}>{z.name}</p>
                   <p style={{ fontSize: '12px', color: '#64748b', margin: '3px 0 0' }}>{z.city} · {z.providers} providers · {(z.areas || []).length} areas</p>
                 </div>
                 <span style={{ background: z.status === 'Active' ? '#dcfce7' : '#fee2e2', color: z.status === 'Active' ? '#16a34a' : '#dc2626', padding: '2px 8px', borderRadius: '999px', fontSize: '11px', fontWeight: '600', whiteSpace: 'nowrap' }}>{z.status}</span>
@@ -285,12 +288,12 @@ export default function ServiceZonesSetup() {
         {selected ? (
           <div style={{ ...card }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-              <h3 style={{ fontSize: '16px', fontWeight: '700', color: '#0f172a', margin: 0 }}>📍 {selected.name}</h3>
+              <h3 style={{ fontSize: '16px', fontWeight: '700', color: '#0f172a', margin: 0 }}>{selected.name}</h3>
               <div style={{ display: 'flex', gap: '8px' }}>
                 <button onClick={() => setModal({ mode: 'edit', zone: selected })}
-                  style={{ background: '#eef2ff', color: '#6366f1', border: 'none', borderRadius: '6px', padding: '6px 14px', fontWeight: '600', fontSize: '12px', cursor: 'pointer' }}>✏️ Edit</button>
+                  style={{ background: '#eef2ff', color: '#6366f1', border: 'none', borderRadius: '6px', padding: '6px 14px', fontWeight: '600', fontSize: '12px', cursor: 'pointer' }}>Edit</button>
                 <button onClick={() => setDeleteTarget(selected)}
-                  style={{ background: '#fef2f2', color: '#ef4444', border: 'none', borderRadius: '6px', padding: '6px 14px', fontWeight: '600', fontSize: '12px', cursor: 'pointer' }}>🗑️ Delete</button>
+                  style={{ background: '#fef2f2', color: '#ef4444', border: 'none', borderRadius: '6px', padding: '6px 14px', fontWeight: '600', fontSize: '12px', cursor: 'pointer' }}>Delete</button>
               </div>
             </div>
 
@@ -308,7 +311,7 @@ export default function ServiceZonesSetup() {
               {(selected.areas || []).length === 0
                 ? <span style={{ fontSize: '13px', color: '#94a3b8' }}>No areas defined.</span>
                 : (selected.areas || []).map((a) => (
-                    <span key={a} style={{ background: '#eef2ff', color: '#4338ca', padding: '4px 12px', borderRadius: '999px', fontSize: '12px', fontWeight: '600' }}>📌 {a}</span>
+                    <span key={a} style={{ background: '#eef2ff', color: '#4338ca', padding: '4px 12px', borderRadius: '999px', fontSize: '12px', fontWeight: '600' }}>{a}</span>
                   ))}
             </div>
 
@@ -318,7 +321,7 @@ export default function ServiceZonesSetup() {
                 const on = (selected.enabledServices || []).includes(svc);
                 return (
                   <div key={svc} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 14px', background: '#f8fafc', borderRadius: '8px', fontSize: '13px', color: '#374151' }}>
-                    <span>🔧 {svc}</span>
+                    <span>{svc}</span>
                     <span style={{ background: on ? '#dcfce7' : '#f1f5f9', color: on ? '#16a34a' : '#94a3b8', padding: '2px 10px', borderRadius: '999px', fontSize: '11px', fontWeight: '600' }}>
                       {on ? 'Enabled' : 'Disabled'}
                     </span>

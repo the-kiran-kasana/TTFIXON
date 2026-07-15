@@ -34,7 +34,7 @@ export default function Messages() {
         {/* Conversation List */}
         <div style={{ ...card, overflow:'hidden', display:'flex', flexDirection:'column' }}>
           <div style={{ padding:'16px', borderBottom:'1px solid #f1f5f9' }}>
-            <input placeholder="🔍 Search conversations..." style={{ width:'100%', padding:'8px 12px', border:'1px solid #e2e8f0', borderRadius:'8px', fontSize:'13px', outline:'none', boxSizing:'border-box' }} />
+          <input placeholder="Search conversations..." style={{ width:'100%', padding:'8px 12px', border:'1px solid #e2e8f0', borderRadius:'8px', fontSize:'13px', outline:'none', boxSizing:'border-box' }} />
           </div>
           <div style={{ overflowY:'auto', flex:1 }}>
             {conversations.map(c => (

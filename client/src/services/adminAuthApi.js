@@ -1,9 +1,10 @@
+/**
+ * Admin auth API calls.
+ * Uses the shared apiRequest from lib/adminApi.
+ */
 import { apiRequest } from "@/lib/adminApi";
 
-/**
- * Auth-related API calls (re-exports + extends adminApi for convenience).
- */
-const authApi = {
+const adminAuthApi = {
   /** POST /api/auth/login */
   login: (email, password) =>
     apiRequest("/auth/login", { method: "POST", body: { email, password } }),
@@ -16,4 +17,4 @@ const authApi = {
     apiRequest("/auth/register", { method: "POST", body: { name, email, password, role } }),
 };
 
-export default authApi;
+export default adminAuthApi;

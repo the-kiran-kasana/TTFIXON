@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { MdSend, MdNotifications } from "react-icons/md";
+import { Send, Bell } from "lucide-react";
 
 const recentNotifications = [
   { title: "New Year Offer", target: "All Users", channel: "Push", sent: "12,450", delivered: "11,892", failed: "558", date: "01 Jan 2025" },
@@ -38,7 +38,7 @@ export default function SendNotificationsPage() {
         {/* Form */}
         <div style={card}>
           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 20 }}>
-            <MdNotifications size={20} color="#6366f1" />
+            <Bell size={20} color="#6366f1" />
             <h3 style={{ fontSize: 16, fontWeight: 700, color: "#0f172a", margin: 0 }}>Compose Notification</h3>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -86,7 +86,7 @@ export default function SendNotificationsPage() {
               </div>
             )}
             <button style={{ background: "#6366f1", color: "#fff", padding: "12px 0", borderRadius: 8, border: "none", cursor: "pointer", fontSize: 14, fontWeight: 600, display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
-              <MdSend size={16} /> Send Notification
+              <Send size={16} /> Send Notification
             </button>
           </div>
         </div>
@@ -98,7 +98,7 @@ export default function SendNotificationsPage() {
             <div style={{ background: "#334155", borderRadius: 12, padding: 16 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
                 <div style={{ width: 32, height: 32, borderRadius: "50%", background: "#6366f1", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <MdNotifications size={16} color="#fff" />
+                  <Bell size={16} color="#fff" />
                 </div>
                 <div>
                   <div style={{ fontSize: 12, fontWeight: 700, color: "#e2e8f0" }}>OnDemand App</div>

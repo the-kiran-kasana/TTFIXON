@@ -1,5 +1,5 @@
 "use client";
-import { MdAdd, MdEdit, MdDelete, MdContentCopy } from "react-icons/md";
+import { Plus, Pencil, Trash2, Copy, Ticket, BarChart2, DollarSign, Clock } from "lucide-react";
 
 const coupons = [
   { code: "SAVE100", type: "Flat", discount: "₹100", minOrder: "₹500", used: "234", limit: "500", valid: "31 Jan 2025", status: "Active" },
@@ -17,10 +17,10 @@ const statusColors = {
 };
 
 const stats = [
-  { label: "Active Coupons", value: "12", icon: "🎟️" },
-  { label: "Total Used", value: "3,421", icon: "📊" },
-  { label: "Revenue Impact", value: "₹45,200", icon: "💰" },
-  { label: "Expired", value: "8", icon: "⏰" },
+  { label: "Active Coupons",  value: "12",      Icon: Ticket,    color: "#6366f1", bg: "#eef2ff" },
+  { label: "Total Used",      value: "3,421",   Icon: BarChart2, color: "#10b981", bg: "#ecfdf5" },
+  { label: "Revenue Impact",  value: "₹45,200", Icon: DollarSign,color: "#f59e0b", bg: "#fffbeb" },
+  { label: "Expired",         value: "8",       Icon: Clock,     color: "#ef4444", bg: "#fef2f2" },
 ];
 
 export default function CouponsPage() {
@@ -34,7 +34,7 @@ export default function CouponsPage() {
           <p style={{ fontSize: 14, color: "#94a3b8", margin: "4px 0 0" }}>Create and manage discount coupons</p>
         </div>
         <button style={{ background: "#6366f1", color: "#fff", padding: "10px 20px", borderRadius: 8, border: "none", cursor: "pointer", fontSize: 14, fontWeight: 600, display: "flex", alignItems: "center", gap: 6 }}>
-          <MdAdd size={18} /> Create Coupon
+          <Plus size={18} /> Create Coupon
         </button>
       </div>
 
@@ -46,7 +46,9 @@ export default function CouponsPage() {
                 <p style={{ fontSize: 13, color: "#94a3b8", margin: 0, fontWeight: 600 }}>{s.label}</p>
                 <p style={{ fontSize: 28, fontWeight: 700, color: "#0f172a", margin: "4px 0 0" }}>{s.value}</p>
               </div>
-              <div style={{ fontSize: 32 }}>{s.icon}</div>
+              <div style={{ width: 44, height: 44, borderRadius: 10, background: s.bg, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <s.Icon size={20} color={s.color} />
+              </div>
             </div>
           </div>
         ))}
@@ -67,7 +69,7 @@ export default function CouponsPage() {
                 <td style={{ padding: "14px 12px" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                     <span style={{ fontFamily: "monospace", fontWeight: 700, fontSize: 14, background: "#f1f5f9", padding: "4px 8px", borderRadius: 6, color: "#6366f1" }}>{c.code}</span>
-                    <MdContentCopy size={14} style={{ color: "#94a3b8", cursor: "pointer" }} />
+                    <Copy size={14} style={{ color: "#94a3b8", cursor: "pointer" }} />
                   </div>
                 </td>
                 <td style={{ padding: "14px 12px" }}>
@@ -85,8 +87,8 @@ export default function CouponsPage() {
                 </td>
                 <td style={{ padding: "14px 12px" }}>
                   <div style={{ display: "flex", gap: 8 }}>
-                    <button style={{ background: "#f1f5f9", border: "none", borderRadius: 6, padding: 6, cursor: "pointer", color: "#f59e0b" }}><MdEdit size={15} /></button>
-                    <button style={{ background: "#fee2e2", border: "none", borderRadius: 6, padding: 6, cursor: "pointer", color: "#ef4444" }}><MdDelete size={15} /></button>
+                    <button style={{ background: "#f1f5f9", border: "none", borderRadius: 6, padding: 6, cursor: "pointer", color: "#f59e0b" }}><Pencil size={15} /></button>
+                    <button style={{ background: "#fee2e2", border: "none", borderRadius: 6, padding: 6, cursor: "pointer", color: "#ef4444" }}><Trash2 size={15} /></button>
                   </div>
                 </td>
               </tr>

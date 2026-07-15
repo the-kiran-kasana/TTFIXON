@@ -1,13 +1,13 @@
 "use client";
-import { MdFileDownload, MdPlayArrow, MdPictureAsPdf, MdTableChart } from "react-icons/md";
+import { Download, Play, FileText, Table2, DollarSign, ClipboardList, Star, Users, ShieldCheck, Layers } from "lucide-react";
 
 const reportTypes = [
-  { icon: "💰", title: "Revenue Report", desc: "Monthly and annual revenue breakdown by service, zone, and provider.", color: "#eef2ff" },
-  { icon: "📋", title: "Booking Report", desc: "Detailed booking analytics with status, trends, and cancellations.", color: "#f0fdf4" },
-  { icon: "⭐", title: "Provider Performance", desc: "Ratings, jobs completed, earnings, and response time metrics.", color: "#fff7ed" },
-  { icon: "👥", title: "Customer Report", desc: "Customer acquisition, retention, LTV, and activity analysis.", color: "#fdf4ff" },
-  { icon: "🛡️", title: "Warranty Report", desc: "Warranty claims, resolutions, and pending cases overview.", color: "#eff6ff" },
-  { icon: "🧱", title: "Material Cost Report", desc: "Material usage, costs, and wastage tracking per project.", color: "#fef9c3" },
+  { Icon: DollarSign,   title: "Revenue Report",          desc: "Monthly and annual revenue breakdown by service, zone, and provider.", color: "#eef2ff" },
+  { Icon: ClipboardList,title: "Booking Report",           desc: "Detailed booking analytics with status, trends, and cancellations.",   color: "#f0fdf4" },
+  { Icon: Star,         title: "Provider Performance",     desc: "Ratings, jobs completed, earnings, and response time metrics.",        color: "#fff7ed" },
+  { Icon: Users,        title: "Customer Report",          desc: "Customer acquisition, retention, LTV, and activity analysis.",         color: "#fdf4ff" },
+  { Icon: ShieldCheck,  title: "Warranty Report",          desc: "Warranty claims, resolutions, and pending cases overview.",            color: "#eff6ff" },
+  { Icon: Layers,       title: "Material Cost Report",     desc: "Material usage, costs, and wastage tracking per project.",             color: "#fef9c3" },
 ];
 
 const recentReports = [
@@ -31,16 +31,16 @@ export default function ReportsPage() {
       {/* Report Type Grid */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 28 }}>
         {reportTypes.map((r) => (
-          <div key={r.title} style={{ ...card, background: r.color, border: "1px solid #e2e8f0" }}>
-            <div style={{ fontSize: 36, marginBottom: 12 }}>{r.icon}</div>
+          <div key={r.title} style={{ background: r.color, border: "1px solid #e2e8f0", borderRadius: 12, padding: 24 }}>
+            <div style={{ marginBottom: 12 }}><r.Icon size={36} color="#6366f1" /></div>
             <h3 style={{ fontSize: 15, fontWeight: 700, color: "#0f172a", margin: "0 0 8px" }}>{r.title}</h3>
             <p style={{ fontSize: 13, color: "#64748b", margin: "0 0 16px", lineHeight: 1.6 }}>{r.desc}</p>
             <div style={{ display: "flex", gap: 8 }}>
               <button style={{ flex: 1, background: "#6366f1", color: "#fff", border: "none", borderRadius: 8, padding: "9px 0", cursor: "pointer", fontSize: 13, fontWeight: 600, display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}>
-                <MdPlayArrow size={16} /> Generate
+                <Play size={16} /> Generate
               </button>
               <button style={{ background: "#fff", color: "#475569", border: "1px solid #e2e8f0", borderRadius: 8, padding: "9px 14px", cursor: "pointer", fontSize: 13, fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
-                <MdFileDownload size={15} /> Download
+                <Download size={15} /> Download
               </button>
             </div>
           </div>
@@ -66,12 +66,12 @@ export default function ReportsPage() {
                 <td style={{ padding: "14px 12px", fontSize: 14, color: "#475569" }}>{r.date}</td>
                 <td style={{ padding: "14px 12px" }}>
                   <span style={{ background: r.format === "PDF" ? "#fee2e2" : r.format === "Excel" ? "#dcfce7" : "#dbeafe", color: r.format === "PDF" ? "#dc2626" : r.format === "Excel" ? "#16a34a" : "#2563eb", borderRadius: 999, padding: "3px 10px", fontSize: 12, fontWeight: 600, display: "inline-flex", alignItems: "center", gap: 4 }}>
-                    {r.format === "PDF" ? <MdPictureAsPdf size={12} /> : <MdTableChart size={12} />} {r.format}
+                    {r.format === "PDF" ? <FileText size={12} /> : <Table2 size={12} />} {r.format}
                   </span>
                 </td>
                 <td style={{ padding: "14px 12px" }}>
                   <button style={{ background: "#f1f5f9", border: "none", borderRadius: 6, padding: "6px 12px", cursor: "pointer", color: "#6366f1", fontSize: 13, fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
-                    <MdFileDownload size={15} /> Download
+                    <Download size={15} /> Download
                   </button>
                 </td>
               </tr>

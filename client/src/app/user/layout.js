@@ -1,5 +1,6 @@
 import Header from "../../components/user/layout/Header/Header";
 import Footer from "../../components/user/layout/Footer/Footer";
+import ReduxProvider from "../../store/ReduxProvider";
 
 export const metadata = {
   title: "On Demand — Electrician and plumbing services",
@@ -8,10 +9,12 @@ export const metadata = {
 
 export default function UserLayout({ children }) {
   return (
-    <div className="min-h-screen bg-white text-gray-900">
-      <Header />
-      <main>{children}</main>
-      <Footer />
-    </div>
+    <ReduxProvider>
+      <div className="min-h-screen bg-white text-gray-900">
+        <Header />
+        <main>{children}</main>
+        <Footer />
+      </div>
+    </ReduxProvider>
   );
 }

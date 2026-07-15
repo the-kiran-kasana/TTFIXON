@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { HardHat, CheckCircle, Clock, Ban, Trash2, Eye, Pencil, RefreshCw } from 'lucide-react';
 import {
   fetchServicemen,
   fetchServicemanStats,
@@ -196,7 +197,7 @@ function ServicemanViewModal({ sm, onClose, onEdit }) {
           <div style={{ display: 'flex', gap: '10px', marginTop: '20px' }}>
             <button onClick={onEdit}
               style={{ flex: 1, background: '#6366f1', color: '#fff', border: 'none', borderRadius: '8px', padding: '11px', fontWeight: '700', fontSize: '14px', cursor: 'pointer' }}>
-              ✏️ Edit
+              Edit
             </button>
             <button onClick={onClose}
               style={{ flex: 1, background: '#fff', color: '#64748b', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '11px', fontWeight: '600', fontSize: '14px', cursor: 'pointer' }}>
@@ -217,7 +218,9 @@ function ConfirmDeleteModal({ sm, onClose, onConfirm, loading }) {
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <div style={{ background: '#fff', borderRadius: '14px', maxWidth: '420px', width: '100%', padding: '28px', textAlign: 'center' }}>
-        <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: '#fef2f2', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '26px', margin: '0 auto 16px' }}>🗑️</div>
+        <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: '#fef2f2', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
+          <Trash2 size={26} color="#ef4444" />
+        </div>
         <h3 style={{ fontSize: '17px', fontWeight: '700', color: '#0f172a', margin: '0 0 8px' }}>Delete Service Man?</h3>
         <p style={{ color: '#64748b', fontSize: '14px', marginBottom: '22px' }}>
           Are you sure you want to delete <strong>{sm?.name}</strong>? This action cannot be undone.
@@ -247,7 +250,7 @@ function Toast({ message, type, onClose }) {
       padding: '12px 20px', borderRadius: '10px', fontSize: '14px', fontWeight: '600',
       boxShadow: '0 4px 12px rgba(0,0,0,0.15)', display: 'flex', alignItems: 'center', gap: '10px',
     }}>
-      {type === 'success' ? '✅' : '❌'} {message}
+      {type === 'success' ? '' : ''} {message}
       <button onClick={onClose} style={{ background: 'none', border: 'none', color: '#fff', fontSize: '16px', cursor: 'pointer', marginLeft: '4px' }}>×</button>
     </div>
   );
@@ -300,10 +303,10 @@ export default function ServiceManPage() {
 
   // ── Stat cards ─────────────────────────────────────────────────────────────
   const statCards = [
-    { label: 'Total Service Men', value: stats.total,     icon: '👷', color: '#6366f1', bg: '#eef2ff' },
-    { label: 'Verified',          value: stats.verified,  icon: '✅', color: '#10b981', bg: '#ecfdf5' },
-    { label: 'Pending Approval',  value: stats.pending,   icon: '⏳', color: '#f59e0b', bg: '#fffbeb' },
-    { label: 'Suspended',         value: stats.suspended, icon: '🚫', color: '#ef4444', bg: '#fef2f2' },
+    { label: 'Total Service Men', value: stats.total,     Icon: HardHat,      color: '#6366f1', bg: '#eef2ff' },
+    { label: 'Verified',          value: stats.verified,  Icon: CheckCircle,  color: '#10b981', bg: '#ecfdf5' },
+    { label: 'Pending Approval',  value: stats.pending,   Icon: Clock,        color: '#f59e0b', bg: '#fffbeb' },
+    { label: 'Suspended',         value: stats.suspended, Icon: Ban,          color: '#ef4444', bg: '#fef2f2' },
   ];
 
   return (
@@ -358,7 +361,9 @@ export default function ServiceManPage() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '16px', marginBottom: '24px' }}>
         {statCards.map((s) => (
           <div key={s.label} style={{ ...card, display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <div style={{ width: '44px', height: '44px', borderRadius: '10px', background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px' }}>{s.icon}</div>
+            <div style={{ width: '44px', height: '44px', borderRadius: '10px', background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <s.Icon size={20} color={s.color} />
+            </div>
             <div>
               <p style={{ fontSize: '12px', color: '#64748b', margin: 0 }}>{s.label}</p>
               <p style={{ fontSize: '22px', fontWeight: '700', color: s.color, margin: '2px 0 0' }}>{statsLoading ? '—' : s.value}</p>
@@ -371,7 +376,7 @@ export default function ServiceManPage() {
       <div style={card}>
         {/* Filters */}
         <div style={{ display: 'flex', gap: '12px', marginBottom: '20px', flexWrap: 'wrap' }}>
-          <input placeholder="🔍 Search service men..." value={search} onChange={(e) => setSearch(e.target.value)}
+          <input placeholder="Search service men..." value={search} onChange={(e) => setSearch(e.target.value)}
             style={{ padding: '9px 14px', border: '1px solid #e2e8f0', borderRadius: '8px', fontSize: '14px', width: '260px', outline: 'none' }} />
           <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}
             style={{ padding: '9px 14px', border: '1px solid #e2e8f0', borderRadius: '8px', fontSize: '14px', outline: 'none', color: '#475569', background: '#fff', cursor: 'pointer' }}>
@@ -379,7 +384,7 @@ export default function ServiceManPage() {
           </select>
           <button onClick={load}
             style={{ padding: '9px 16px', background: '#f1f5f9', border: '1px solid #e2e8f0', borderRadius: '8px', fontSize: '13px', cursor: 'pointer', color: '#475569', fontWeight: '600' }}>
-            🔄 Refresh
+            Refresh
           </button>
           <span style={{ marginLeft: 'auto', fontSize: '13px', color: '#94a3b8', alignSelf: 'center' }}>
             {total} service man{total !== 1 ? 'men' : ''}
@@ -445,15 +450,15 @@ export default function ServiceManPage() {
                     <div style={{ display: 'flex', gap: '6px' }}>
                       <button onClick={() => setViewTarget(sm)}
                         style={{ padding: '5px 10px', background: '#e0e7ff', color: '#4338ca', border: 'none', borderRadius: '6px', fontSize: '12px', fontWeight: '600', cursor: 'pointer' }}>
-                        👁️ View
+                        View
                       </button>
                       <button onClick={() => setModal({ mode: 'edit', sm })}
                         style={{ padding: '5px 10px', background: '#f1f5f9', color: '#475569', border: 'none', borderRadius: '6px', fontSize: '12px', fontWeight: '600', cursor: 'pointer' }}>
-                        ✏️ Edit
+                        Edit
                       </button>
                       <button onClick={() => setDeleteTarget(sm)}
                         style={{ padding: '5px 10px', background: '#fef2f2', color: '#ef4444', border: 'none', borderRadius: '6px', fontSize: '12px', fontWeight: '600', cursor: 'pointer' }}>
-                        🗑️
+                        <Trash2 size={14} />
                       </button>
                     </div>
                   </td>
