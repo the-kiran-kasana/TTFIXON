@@ -1,11 +1,12 @@
 'use client';
 import { useState } from 'react';
+import Image from 'next/image';
 
 const banners = [
-  { id:1, title:'Summer Sale 2026', subtitle:'Up to 50% OFF on all services', target:'All Users', position:'Home Top', start:'Jun 1, 2026', end:'Jun 30, 2026', clicks:2840, impressions:18500, status:'Active', color:'linear-gradient(135deg,#6366f1,#8b5cf6)' },
-  { id:2, title:'New User Welcome', subtitle:'Get ₹200 OFF on first booking', target:'New Users', position:'App Splash', start:'Jan 1, 2026', end:'Dec 31, 2026', clicks:1240, impressions:9200, status:'Active', color:'linear-gradient(135deg,#10b981,#059669)' },
-  { id:3, title:'Mumbai Monsoon Deal', subtitle:'Special rates for Mumbai this monsoon', target:'Mumbai Users', position:'Category Page', start:'Jun 15, 2026', end:'Sep 30, 2026', clicks:560, impressions:4100, status:'Active', color:'linear-gradient(135deg,#f59e0b,#d97706)' },
-  { id:4, title:'Diwali Offer', subtitle:'30% OFF — Limited time!', target:'All Users', position:'Home Top', start:'Oct 15, 2026', end:'Oct 30, 2026', clicks:0, impressions:0, status:'Scheduled', color:'linear-gradient(135deg,#ef4444,#dc2626)' },
+  { id:1, title:'Bathroom Plumbing', subtitle:'Expert bathroom plumbing & fitting services', target:'All Users', position:'Home Top', start:'Jun 1, 2026', end:'Jun 30, 2026', clicks:2840, impressions:18500, status:'Active', image:'/images/Banner/bathroom-plumbing.png' },
+  { id:2, title:'Electrical Installation', subtitle:'Safe & certified electrical installation', target:'New Users', position:'App Splash', start:'Jan 1, 2026', end:'Dec 31, 2026', clicks:1240, impressions:9200, status:'Active', image:'/images/Banner/electrical-installation.png' },
+  { id:3, title:'Electrical Safety', subtitle:'Get your wiring safety-checked today', target:'All Users', position:'Category Page', start:'Jun 15, 2026', end:'Sep 30, 2026', clicks:560, impressions:4100, status:'Active', image:'/images/Banner/electrical-safety.png' },
+  { id:4, title:'Emergency Plumbing', subtitle:'24/7 emergency plumbing — we\'re always ready', target:'All Users', position:'Home Top', start:'Oct 15, 2026', end:'Oct 30, 2026', clicks:0, impressions:0, status:'Scheduled', image:'/images/Banner/emergency-plumbing.png' },
 ];
 
 const card = { background:'#fff', borderRadius:'12px', padding:'24px', boxShadow:'0 1px 3px rgba(0,0,0,0.08)', border:'1px solid #f1f5f9' };
@@ -44,9 +45,14 @@ export default function PromotionalBanners() {
         {banners.map(b => (
           <div key={b.id} style={card}>
             {/* Preview */}
-            <div style={{ background:b.color, borderRadius:'8px', padding:'20px', marginBottom:'16px', color:'#fff' }}>
-              <p style={{ fontWeight:'700', fontSize:'16px', margin:'0 0 4px' }}>{b.title}</p>
-              <p style={{ fontSize:'13px', margin:0, opacity:0.85 }}>{b.subtitle}</p>
+            <div style={{ borderRadius:'8px', overflow:'hidden', marginBottom:'16px', position:'relative', width:'100%', height:'140px' }}>
+              <Image
+                src={b.image}
+                alt={b.title}
+                fill
+                style={{ objectFit:'cover' }}
+                sizes="(max-width: 768px) 100vw, 300px"
+              />
             </div>
             <div style={{ display:'flex', justifyContent:'space-between', marginBottom:'12px' }}>
               <span style={{ background:statusStyle[b.status].bg, color:statusStyle[b.status].color, padding:'3px 10px', borderRadius:'999px', fontSize:'12px', fontWeight:'600' }}>{b.status}</span>
