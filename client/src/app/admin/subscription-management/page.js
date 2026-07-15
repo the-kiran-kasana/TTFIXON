@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { Users, CheckCircle, DollarSign, RefreshCw } from 'lucide-react';
 
 const plans = [
   { name:'Basic Plan', price:'₹299/mo', features:['5 Bookings/month','Standard Support','No Wallet Bonus'], color:'#64748b', bg:'#f8fafc', users:284 },
@@ -17,6 +18,13 @@ const subscribers = [
 const card = { background:'#fff', borderRadius:'12px', padding:'24px', boxShadow:'0 1px 3px rgba(0,0,0,0.08)', border:'1px solid #f1f5f9' };
 const statusStyle = { Active:{ bg:'#dcfce7', color:'#16a34a' }, Expired:{ bg:'#fee2e2', color:'#dc2626' } };
 
+const statCards = [
+  { l:'Total Subscribers',   v:'994',   Icon:Users,        color:'#6366f1', bg:'#eef2ff' },
+  { l:'Active Subscriptions',v:'896',   Icon:CheckCircle,  color:'#10b981', bg:'#ecfdf5' },
+  { l:'Monthly Revenue',     v:'₹4.8L', Icon:DollarSign,   color:'#f59e0b', bg:'#fffbeb' },
+  { l:'Renewals Due',        v:'43',    Icon:RefreshCw,    color:'#ef4444', bg:'#fef2f2' },
+];
+
 export default function SubscriptionManagement() {
   const [tab, setTab] = useState('plans');
 
@@ -29,12 +37,11 @@ export default function SubscriptionManagement() {
 
       {/* Stats */}
       <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(180px,1fr))', gap:'16px' }}>
-        {[{ l:'Total Subscribers', v:'994', icon:'👥', color:'#6366f1', bg:'#eef2ff' },
-          { l:'Active Subscriptions', v:'896', icon:'✅', color:'#10b981', bg:'#ecfdf5' },
-          { l:'Monthly Revenue', v:'₹4.8L', icon:'💰', color:'#f59e0b', bg:'#fffbeb' },
-          { l:'Renewals Due', v:'43', icon:'🔄', color:'#ef4444', bg:'#fef2f2' }].map(s => (
+        {statCards.map(s => (
           <div key={s.l} style={{ ...card, display:'flex', alignItems:'center', gap:'14px' }}>
-            <div style={{ width:'44px', height:'44px', borderRadius:'10px', background:s.bg, display:'flex', alignItems:'center', justifyContent:'center', fontSize:'20px' }}>{s.icon}</div>
+            <div style={{ width:'44px', height:'44px', borderRadius:'10px', background:s.bg, display:'flex', alignItems:'center', justifyContent:'center' }}>
+              <s.Icon size={20} color={s.color} />
+            </div>
             <div>
               <p style={{ fontSize:'12px', color:'#64748b', margin:0 }}>{s.l}</p>
               <p style={{ fontSize:'20px', fontWeight:'700', color:s.color, margin:'2px 0 0' }}>{s.v}</p>
@@ -45,7 +52,7 @@ export default function SubscriptionManagement() {
 
       {/* Tabs */}
       <div style={{ display:'flex', gap:'8px', borderBottom:'2px solid #f1f5f9' }}>
-        {[{ k:'plans', l:'📦 Plans' }, { k:'subscribers', l:'👥 Subscribers' }].map(t => (
+        {[{ k:'plans', l:'Plans' }, { k:'subscribers', l:'Subscribers' }].map(t => (
           <button key={t.k} onClick={() => setTab(t.k)} style={{ padding:'10px 18px', border:'none', background:'none', fontWeight:'600', fontSize:'14px', cursor:'pointer', borderBottom:tab===t.k?'2px solid #6366f1':'2px solid transparent', color:tab===t.k?'#6366f1':'#64748b', marginBottom:'-2px' }}>{t.l}</button>
         ))}
       </div>
@@ -59,7 +66,9 @@ export default function SubscriptionManagement() {
               <p style={{ fontSize:'24px', fontWeight:'700', color:p.color, margin:'0 0 16px' }}>{p.price}</p>
               <div style={{ marginBottom:'16px' }}>
                 {p.features.map(f => (
-                  <p key={f} style={{ fontSize:'13px', color:'#475569', margin:'6px 0', display:'flex', alignItems:'center', gap:'6px' }}>✅ {f}</p>
+                  <p key={f} style={{ fontSize:'13px', color:'#475569', margin:'6px 0', display:'flex', alignItems:'center', gap:'6px' }}>
+                    <CheckCircle size={14} color="#10b981" /> {f}
+                  </p>
                 ))}
               </div>
               <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', padding:'10px', background:p.bg, borderRadius:'8px' }}>

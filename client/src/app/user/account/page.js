@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { LogOut, Check } from "lucide-react";
-import { updateProfile, logout } from "@/store/user/authSlice";
+import { updateProfile, logout } from "@/store/slices/userAuthSlice";
 
 const CATEGORY_OPTIONS = [
   "Painting",

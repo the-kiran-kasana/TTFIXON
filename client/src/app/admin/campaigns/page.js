@@ -18,7 +18,9 @@ import {
     Clock,
     Users,
     TrendingUp,
-    Eye
+    Eye,
+    CalendarDays,
+    Megaphone
 } from 'lucide-react'
 
 // Helper function - Move outside component
@@ -77,12 +79,9 @@ function CampaignCard({ campaign, status }) {
     return (
         <div className={`bg-white rounded-lg p-4 border ${getCardColor(campaign.color)} shadow-sm hover:shadow-md transition-all group`}>
             <div className="flex items-start justify-between">
-                <div className="flex items-center gap-2">
-                    <span className="text-xl">{campaign.icon}</span>
-                    <div>
-                        <h4 className="font-medium text-gray-800 text-sm">{campaign.name}</h4>
-                        <p className="text-xs text-gray-500">{campaign.type}</p>
-                    </div>
+                <div>
+                    <h4 className="font-medium text-gray-800 text-sm">{campaign.name}</h4>
+                    <p className="text-xs text-gray-500">{campaign.type}</p>
                 </div>
                 <button className="opacity-0 group-hover:opacity-100 transition-opacity">
                     <MoreVertical className="w-4 h-4 text-gray-400" />
@@ -149,7 +148,6 @@ export default function CampaignsPage() {
             reach: '12,500',
             conversions: 234,
             roi: '4.2x',
-            icon: '🎆',
             color: 'purple'
         },
         {
@@ -163,7 +161,6 @@ export default function CampaignsPage() {
             reach: '8,200',
             conversions: 189,
             roi: '3.8x',
-            icon: '🌧️',
             color: 'blue'
         },
         {
@@ -177,7 +174,6 @@ export default function CampaignsPage() {
             reach: '15,600',
             conversions: 456,
             roi: '5.1x',
-            icon: '☀️',
             color: 'green'
         },
         {
@@ -191,7 +187,6 @@ export default function CampaignsPage() {
             reach: '5,000',
             conversions: 0,
             roi: '0x',
-            icon: '👋',
             color: 'yellow'
         },
         {
@@ -205,7 +200,6 @@ export default function CampaignsPage() {
             reach: '6,800',
             conversions: 312,
             roi: '6.2x',
-            icon: '🤝',
             color: 'pink'
         },
         {
@@ -219,7 +213,6 @@ export default function CampaignsPage() {
             reach: '10,200',
             conversions: 289,
             roi: '4.5x',
-            icon: '🎄',
             color: 'red'
         },
     ]
@@ -467,7 +460,7 @@ export default function CampaignsPage() {
                                     <tr key={campaign.id} className="hover:bg-gray-50 transition-colors">
                                         <td className="px-6 py-4">
                                             <div className="flex items-center gap-3">
-                                                <span className="text-2xl">{campaign.icon}</span>
+                                                <span className="text-2xl"></span>
                                                 <div>
                                                     <p className="font-medium text-gray-800">{campaign.name}</p>
                                                     <p className="text-xs text-gray-400">{campaign.type}</p>
@@ -515,7 +508,7 @@ export default function CampaignsPage() {
             {viewMode === 'calendar' && (
                 <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                     <div className="text-center py-12">
-                        <div className="text-6xl mb-4">📅</div>
+                        <div className="text-6xl mb-4"><CalendarDays className="w-16 h-16 text-gray-300 mx-auto" /></div>
                         <h3 className="text-lg font-semibold text-gray-800">Calendar View</h3>
                         <p className="text-sm text-gray-500 mt-1">Campaign calendar coming soon</p>
                         <p className="text-xs text-gray-400 mt-2">Switch to Board or List view to see campaigns</p>
@@ -526,7 +519,7 @@ export default function CampaignsPage() {
             {/* Empty State */}
             {filteredCampaigns.length === 0 && viewMode !== 'calendar' && (
                 <div className="text-center py-12 bg-white rounded-xl border border-gray-100">
-                    <div className="text-6xl mb-4">📣</div>
+                    <div className="text-6xl mb-4"><Megaphone className="w-16 h-16 text-gray-300 mx-auto" /></div>
                     <h3 className="text-lg font-semibold text-gray-800">No campaigns found</h3>
                     <p className="text-sm text-gray-500 mt-1">Try adjusting your search or filters</p>
                     <button

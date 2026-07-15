@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAdminAuth } from '@/context/admin/AuthContext';
-import { fetchCustomers, createCustomer, clearCreateError } from '@/store/admin/customersSlice';
+import { fetchCustomers, createCustomer, clearCustomerError } from '@/store/slices/customersSlice';
 
 const CATEGORY_OPTIONS = ['Painting', 'Plumbing', 'Electrical', 'Interior Design', 'Civil Work', 'Cleaning'];
 
@@ -25,7 +25,7 @@ function formatDate(value) {
 export default function CustomersPage() {
   const { token } = useAdminAuth();
   const dispatch = useDispatch();
-  const { items: customers, loading, error, creating, createError } = useSelector(
+  const { items: customers, loading, error, actionLoading: creating, actionError: createError } = useSelector(
     (state) => state.customers
   );
 
@@ -63,7 +63,7 @@ export default function CustomersPage() {
   const openForm = () => {
     setForm(emptyForm);
     setFormError('');
-    dispatch(clearCreateError());
+    dispatch(clearCustomerError());
     setShowForm(true);
   };
 

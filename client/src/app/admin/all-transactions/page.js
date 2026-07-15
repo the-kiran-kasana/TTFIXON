@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { MdSearch, MdVisibility, MdFileDownload } from "react-icons/md";
+import { Search, Eye, Download, DollarSign, Clock, Undo2, TrendingUp } from "lucide-react";
 
 const transactions = [
   { id: "#TXN8821", type: "Payment",  party: "Rahul Sharma",    amount: "₹4,500",  gateway: "Razorpay",     status: "Success",   date: "15 Jan 2025" },
@@ -32,10 +32,10 @@ const statusColors = {
 };
 
 const stats = [
-  { label: "Total Revenue", value: "$45,231", icon: "💵" },
-  { label: "Pending", value: "₹12,400", icon: "⏳" },
-  { label: "Refunds", value: "₹2,100", icon: "↩️" },
-  { label: "Commission", value: "$8,920", icon: "📈" },
+  { label: "Total Revenue", value: "$45,231", Icon: DollarSign, color: "#6366f1", bg: "#eef2ff" },
+  { label: "Pending",       value: "₹12,400", Icon: Clock,      color: "#f59e0b", bg: "#fffbeb" },
+  { label: "Refunds",       value: "₹2,100",  Icon: Undo2,      color: "#ef4444", bg: "#fef2f2" },
+  { label: "Commission",    value: "$8,920",   Icon: TrendingUp, color: "#10b981", bg: "#ecfdf5" },
 ];
 
 export default function AllTransactionsPage() {
@@ -65,7 +65,9 @@ export default function AllTransactionsPage() {
                 <p style={{ fontSize: 13, color: "#94a3b8", margin: 0, fontWeight: 600 }}>{s.label}</p>
                 <p style={{ fontSize: 26, fontWeight: 700, color: "#0f172a", margin: "4px 0 0" }}>{s.value}</p>
               </div>
-              <div style={{ fontSize: 32 }}>{s.icon}</div>
+              <div style={{ width: 44, height: 44, borderRadius: 10, background: s.bg, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <s.Icon size={20} color={s.color} />
+              </div>
             </div>
           </div>
         ))}
@@ -73,7 +75,7 @@ export default function AllTransactionsPage() {
 
       <div style={{ ...card, marginBottom: 24, display: "flex", gap: 12, alignItems: "center" }}>
         <div style={{ position: "relative", flex: 1 }}>
-          <MdSearch style={{ position: "absolute", left: 10, top: "50%", transform: "translateY(-50%)", color: "#94a3b8", fontSize: 18 }} />
+          <Search size={16} style={{ position: "absolute", left: 10, top: "50%", transform: "translateY(-50%)", color: "#94a3b8" }} />
           <input placeholder="Search transactions..." value={search} onChange={(e) => setSearch(e.target.value)}
             style={{ width: "100%", padding: "10px 12px 10px 34px", border: "1px solid #e2e8f0", borderRadius: 8, fontSize: 14, outline: "none", boxSizing: "border-box" }} />
         </div>
@@ -83,7 +85,7 @@ export default function AllTransactionsPage() {
         <input type="date" style={{ padding: "10px 12px", border: "1px solid #e2e8f0", borderRadius: 8, fontSize: 14, outline: "none" }} />
         <input type="date" style={{ padding: "10px 12px", border: "1px solid #e2e8f0", borderRadius: 8, fontSize: 14, outline: "none" }} />
         <button style={{ background: "#6366f1", color: "#fff", padding: "10px 20px", borderRadius: 8, border: "none", cursor: "pointer", fontSize: 14, fontWeight: 600, display: "flex", alignItems: "center", gap: 6, whiteSpace: "nowrap" }}>
-          <MdFileDownload size={16} /> Export
+          <Download size={16} /> Export
         </button>
       </div>
 
@@ -111,7 +113,7 @@ export default function AllTransactionsPage() {
                 </td>
                 <td style={{ padding: "14px 12px", fontSize: 14, color: "#475569" }}>{t.date}</td>
                 <td style={{ padding: "14px 12px" }}>
-                  <button style={{ background: "#f1f5f9", border: "none", borderRadius: 6, padding: 6, cursor: "pointer", color: "#6366f1" }}><MdVisibility size={15} /></button>
+                  <button style={{ background: "#f1f5f9", border: "none", borderRadius: 6, padding: 6, cursor: "pointer", color: "#6366f1" }}><Eye size={15} /></button>
                 </td>
               </tr>
             ))}

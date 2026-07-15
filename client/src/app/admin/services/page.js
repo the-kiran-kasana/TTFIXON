@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { MdAdd, MdEdit, MdDelete, MdVisibility } from "react-icons/md";
+import { Plus, Pencil, Trash2, Eye } from "lucide-react";
 
 const tabs = ["All", "Painting", "Plumbing", "Electrical", "Interior", "Civil", "Cleaning"];
 
@@ -29,7 +29,7 @@ export default function ServicesPage() {
           <p style={{ fontSize: 14, color: "#94a3b8", margin: "4px 0 0" }}>Manage all available services</p>
         </div>
         <button style={{ background: "#6366f1", color: "#fff", padding: "10px 20px", borderRadius: 8, border: "none", cursor: "pointer", fontSize: 14, fontWeight: 600, display: "flex", alignItems: "center", gap: 6 }}>
-          <MdAdd size={18} /> Add Service
+          <Plus size={18} /> Add Service
         </button>
       </div>
 
@@ -68,9 +68,9 @@ export default function ServicesPage() {
                 </td>
                 <td style={{ padding: "14px 12px" }}>
                   <div style={{ display: "flex", gap: 8 }}>
-                    <button style={{ background: "#f1f5f9", border: "none", borderRadius: 6, padding: 6, cursor: "pointer", color: "#6366f1" }}><MdVisibility size={15} /></button>
-                    <button style={{ background: "#f1f5f9", border: "none", borderRadius: 6, padding: 6, cursor: "pointer", color: "#f59e0b" }}><MdEdit size={15} /></button>
-                    <button style={{ background: "#fee2e2", border: "none", borderRadius: 6, padding: 6, cursor: "pointer", color: "#ef4444" }}><MdDelete size={15} /></button>
+                    <button style={{ background: "#f1f5f9", border: "none", borderRadius: 6, padding: 6, cursor: "pointer", color: "#6366f1" }}><Eye size={15} /></button>
+                    <button style={{ background: "#f1f5f9", border: "none", borderRadius: 6, padding: 6, cursor: "pointer", color: "#f59e0b" }}><Pencil size={15} /></button>
+                    <button style={{ background: "#fee2e2", border: "none", borderRadius: 6, padding: 6, cursor: "pointer", color: "#ef4444" }}><Trash2 size={15} /></button>
                   </div>
                 </td>
               </tr>

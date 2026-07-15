@@ -7,7 +7,7 @@ import {
   useState,
   useCallback,
 } from "react";
-import { adminAuthApi } from "@/lib/adminApi";
+import adminAuthApi from "@/services/adminAuthApi";
 
 const TOKEN_KEY = "admin_token";
 const ADMIN_KEY = "admin_user";

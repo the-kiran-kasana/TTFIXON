@@ -1,10 +1,11 @@
 "use client";
+import { Users, Clock, CheckCircle, XCircle } from "lucide-react";
 
 const quick = [
-  { title: "New Customers", value: "284", icon: "👥", color: "#6366f1", bg: "#eef2ff" },
-  { title: "Pending Payments", value: "₹24,500", icon: "⏳", color: "#f59e0b", bg: "#fffbeb" },
-  { title: "Completion Rate", value: "94.8%", icon: "✅", color: "#10b981", bg: "#ecfdf5" },
-  { title: "Cancellation Rate", value: "3.2%", icon: "❌", color: "#ef4444", bg: "#fef2f2" },
+  { title: "New Customers", value: "284", Icon: Users, color: "#6366f1", bg: "#eef2ff" },
+  { title: "Pending Payments", value: "₹24,500", Icon: Clock, color: "#f59e0b", bg: "#fffbeb" },
+  { title: "Completion Rate", value: "94.8%", Icon: CheckCircle, color: "#10b981", bg: "#ecfdf5" },
+  { title: "Cancellation Rate", value: "3.2%", Icon: XCircle, color: "#ef4444", bg: "#fef2f2" },
 ];
 
 export default function QuickStats() {
@@ -16,8 +17,8 @@ export default function QuickStats() {
           boxShadow: "0 1px 3px rgba(0,0,0,0.08)", border: "1px solid #f1f5f9",
           display: "flex", alignItems: "center", gap: "14px"
         }}>
-          <div style={{ width: "44px", height: "44px", borderRadius: "10px", background: q.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "20px", flexShrink: 0 }}>
-            {q.icon}
+          <div style={{ width: "44px", height: "44px", borderRadius: "10px", background: q.bg, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+            <q.Icon size={20} color={q.color} />
           </div>
           <div>
             <p style={{ fontSize: "12px", color: "#64748b", fontWeight: 500, marginBottom: "4px" }}>{q.title}</p>

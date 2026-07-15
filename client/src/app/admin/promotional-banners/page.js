@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { ImageIcon, CheckCircle, MousePointerClick, Eye } from 'lucide-react';
 
 const banners = [
   { id:1, title:'Summer Sale 2026', subtitle:'Up to 50% OFF on all services', target:'All Users', position:'Home Top', start:'Jun 1, 2026', end:'Jun 30, 2026', clicks:2840, impressions:18500, status:'Active', color:'linear-gradient(135deg,#6366f1,#8b5cf6)' },
@@ -25,12 +26,14 @@ export default function PromotionalBanners() {
 
       {/* Stats */}
       <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(180px,1fr))', gap:'16px' }}>
-        {[{ l:'Total Banners', v:banners.length, icon:'🖼️', color:'#6366f1', bg:'#eef2ff' },
-          { l:'Active', v:banners.filter(b=>b.status==='Active').length, icon:'✅', color:'#10b981', bg:'#ecfdf5' },
-          { l:'Total Clicks', v:'4,640', icon:'👆', color:'#f59e0b', bg:'#fffbeb' },
-          { l:'Total Impressions', v:'31,800', icon:'👁️', color:'#3b82f6', bg:'#eff6ff' }].map(s => (
+        {[{ l:'Total Banners',     v:banners.length,                             Icon:ImageIcon,         color:'#6366f1', bg:'#eef2ff' },
+          { l:'Active',            v:banners.filter(b=>b.status==='Active').length, Icon:CheckCircle,    color:'#10b981', bg:'#ecfdf5' },
+          { l:'Total Clicks',      v:'4,640',                                    Icon:MousePointerClick, color:'#f59e0b', bg:'#fffbeb' },
+          { l:'Total Impressions', v:'31,800',                                   Icon:Eye,               color:'#3b82f6', bg:'#eff6ff' }].map(s => (
           <div key={s.l} style={{ ...card, display:'flex', alignItems:'center', gap:'14px' }}>
-            <div style={{ width:'44px', height:'44px', borderRadius:'10px', background:s.bg, display:'flex', alignItems:'center', justifyContent:'center', fontSize:'20px' }}>{s.icon}</div>
+            <div style={{ width:'44px', height:'44px', borderRadius:'10px', background:s.bg, display:'flex', alignItems:'center', justifyContent:'center' }}>
+              <s.Icon size={20} color={s.color} />
+            </div>
             <div>
               <p style={{ fontSize:'12px', color:'#64748b', margin:0 }}>{s.l}</p>
               <p style={{ fontSize:'20px', fontWeight:'700', color:s.color, margin:'2px 0 0' }}>{s.v}</p>
@@ -53,9 +56,9 @@ export default function PromotionalBanners() {
               <span style={{ fontSize:'12px', color:'#94a3b8' }}>{b.position}</span>
             </div>
             <div style={{ fontSize:'12px', color:'#64748b', marginBottom:'12px' }}>
-              <p style={{ margin:'3px 0' }}>🎯 Target: {b.target}</p>
-              <p style={{ margin:'3px 0' }}>📅 {b.start} – {b.end}</p>
-              <p style={{ margin:'3px 0' }}>👆 {b.clicks.toLocaleString()} clicks · 👁️ {b.impressions.toLocaleString()} impressions</p>
+              <p style={{ margin:'3px 0' }}>Target: {b.target}</p>
+              <p style={{ margin:'3px 0' }}>{b.start} – {b.end}</p>
+              <p style={{ margin:'3px 0' }}>{b.clicks.toLocaleString()} clicks · {b.impressions.toLocaleString()} impressions</p>
             </div>
             <div style={{ display:'flex', gap:'8px' }}>
               <button style={{ flex:1, background:'#eef2ff', color:'#6366f1', border:'none', borderRadius:'6px', padding:'7px', fontSize:'13px', fontWeight:'600', cursor:'pointer' }}>Edit</button>

@@ -11,7 +11,7 @@ import PromoBanner from "./home/PromoBanner";
  */
 export default function UserHome() {
   return (
-    <div className="mx-auto max-w-[1400px] space-y-24 px-4 py-10">
+    <div className="mx-auto max-w-7xl space-y-16 px-4 py-8 sm:px-6 lg:px-8">
       <HeroSection />
       <SpotlightSection />
 

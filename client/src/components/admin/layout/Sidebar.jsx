@@ -4,56 +4,56 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { MdChevronLeft, MdChevronRight, MdExpandMore, MdExpandLess } from "react-icons/md";
-import { useSidebar } from "../../../context/admin/SidebarContext";
 import {
-    MdDashboard, MdCalendarMonth, MdPercent, MdConfirmationNumber,
-    MdAccountBalanceWallet, MdCampaign, MdAdsClick, MdPhotoLibrary,
-    MdNotifications, MdHowToReg, MdHandyman, MdMap,
-    MdCategory, MdHomeRepairService, MdGroup, MdWallet, MdStar,
-    MdSubscriptions, MdManageAccounts, MdBadge, MdPersonAdd,
-    MdReceiptLong, MdBarChart, MdAnalytics, MdGavel, MdFolder,
-    MdStorefront, MdAccountBalance, MdPayments,
-} from "react-icons/md";
+  ChevronLeft, ChevronRight, ChevronDown, ChevronUp,
+  LayoutDashboard, CalendarDays, Percent, Ticket,
+  Wallet, Megaphone, MousePointerClick, Image as ImageIcon,
+  Bell, UserCheck, Wrench, Map,
+  LayoutGrid, Hammer, Users, Star,
+  CreditCard, Settings, UserPlus, BadgeCheck,
+  ReceiptText, BarChart2, LineChart, Scale, FolderOpen,
+  Store, Landmark, Banknote, ArrowDownToLine,
+} from "lucide-react";
+import { useSidebar } from "../../../context/admin/SidebarContext";
 
 // Regular nav items
 const navItems = [
-    { href: "/admin-dashboard",               label: "Dashboard",               Icon: MdDashboard,            color: "#60a5fa" },
-    { href: "/admin/booking",                 label: "Booking",                 Icon: MdCalendarMonth,        color: "#4ade80" },
-    { href: "/admin/services",                label: "Services",                Icon: MdHomeRepairService,    color: "#fdba74" },
-    { href: "/admin/service-man",             label: "Service Man",             Icon: MdHandyman,             color: "#a3e635" },
-    { href: "/admin/service-vendor",          label: "Service Vendor",          Icon: MdStorefront,           color: "#fb923c" },
-    { href: "/admin/services-zone-setup",     label: "Services Zone Setup",     Icon: MdMap,                  color: "#38bdf8" },
-    { href: "/admin/customers",               label: "Customers",               Icon: MdGroup,                color: "#93c5fd" },
-    { href: "/admin/customer-wallet",         label: "Customer Wallet",         Icon: MdWallet,               color: "#fde047" },
-    { href: "/admin/categories",              label: "Categories",              Icon: MdCategory,             color: "#a78bfa" },
-    { href: "/admin/employee-list",           label: "Employee List",           Icon: MdBadge,                color: "#86efac" },
-    { href: "/admin/employee-role-setup",     label: "Employee Role Setup",     Icon: MdManageAccounts,       color: "#818cf8" },
-    { href: "/admin/add-new-employee",        label: "Add New Employee",        Icon: MdPersonAdd,            color: "#67e8f9" },
-    { href: "/admin/loyalty-point",           label: "Loyalty Point",           Icon: MdStar,                 color: "#facc15" },
-    { href: "/admin/subscription-management", label: "Subscription Management", Icon: MdSubscriptions,        color: "#fb7185" },
+    { href: "/admin-dashboard",               label: "Dashboard",               Icon: LayoutDashboard,  color: "#60a5fa" },
+    { href: "/admin/booking",                 label: "Booking",                 Icon: CalendarDays,     color: "#4ade80" },
+    { href: "/admin/services",                label: "Services",                Icon: Hammer,           color: "#fdba74" },
+    { href: "/admin/service-man",             label: "Service Man",             Icon: Wrench,           color: "#a3e635" },
+    { href: "/admin/service-vendor",          label: "Service Vendor",          Icon: Store,            color: "#fb923c" },
+    { href: "/admin/services-zone-setup",     label: "Services Zone Setup",     Icon: Map,              color: "#38bdf8" },
+    { href: "/admin/customers",               label: "Customers",               Icon: Users,            color: "#93c5fd" },
+    { href: "/admin/customer-wallet",         label: "Customer Wallet",         Icon: Wallet,           color: "#fde047" },
+    { href: "/admin/categories",              label: "Categories",              Icon: LayoutGrid,       color: "#a78bfa" },
+    { href: "/admin/employee-list",           label: "Employee List",           Icon: BadgeCheck,       color: "#86efac" },
+    { href: "/admin/employee-role-setup",     label: "Employee Role Setup",     Icon: Settings,         color: "#818cf8" },
+    { href: "/admin/add-new-employee",        label: "Add New Employee",        Icon: UserPlus,         color: "#67e8f9" },
+    { href: "/admin/loyalty-point",           label: "Loyalty Point",           Icon: Star,             color: "#facc15" },
+    { href: "/admin/subscription-management", label: "Subscription Management", Icon: CreditCard,       color: "#fb7185" },
 ];
 
 // Items rendered after the Transactions group
 const navItemsAfter = [
-    { href: "/admin/reports",                 label: "Reports",                 Icon: MdBarChart,             color: "#f9a8d4" },
-    { href: "/admin/analytics",               label: "Analytics",               Icon: MdAnalytics,            color: "#5eead4" },
-    { href: "/admin/legal-pages",             label: "Legal Pages",             Icon: MdGavel,                color: "#fca5a5" },
-    { href: "/admin/wallet-bonus",            label: "Wallet Bonus",            Icon: MdAccountBalanceWallet, color: "#facc15" },
-    { href: "/admin/campaigns",               label: "Campaigns",               Icon: MdCampaign,             color: "#f87171" },
-    { href: "/admin/advertisements",          label: "Advertisements",          Icon: MdAdsClick,             color: "#c084fc" },
-    { href: "/admin/promotional-banners",     label: "Promotional Banners",     Icon: MdPhotoLibrary,         color: "#22d3ee" },
-    { href: "/admin/send-notifications",      label: "Send Notification",       Icon: MdNotifications,        color: "#fbbf24" },
-    { href: "/admin/onboarding-request",      label: "Onboarding Request",      Icon: MdHowToReg,             color: "#2dd4bf" },
-    { href: "/admin/discount",                label: "Discount",                Icon: MdPercent,              color: "#fb923c" },
-    { href: "/admin/coupons",                 label: "Coupons",                 Icon: MdConfirmationNumber,   color: "#f472b6" },
-    { href: "/admin/file-manager",            label: "File Manager",            Icon: MdFolder,               color: "#fcd34d" },
+    { href: "/admin/reports",                 label: "Reports",                 Icon: BarChart2,        color: "#f9a8d4" },
+    { href: "/admin/analytics",               label: "Analytics",               Icon: LineChart,        color: "#5eead4" },
+    { href: "/admin/legal-pages",             label: "Legal Pages",             Icon: Scale,            color: "#fca5a5" },
+    { href: "/admin/wallet-bonus",            label: "Wallet Bonus",            Icon: Wallet,           color: "#facc15" },
+    { href: "/admin/campaigns",               label: "Campaigns",               Icon: Megaphone,        color: "#f87171" },
+    { href: "/admin/advertisements",          label: "Advertisements",          Icon: MousePointerClick, color: "#c084fc" },
+    { href: "/admin/promotional-banners",     label: "Promotional Banners",     Icon: ImageIcon,        color: "#22d3ee" },
+    { href: "/admin/send-notifications",      label: "Send Notification",       Icon: Bell,             color: "#fbbf24" },
+    { href: "/admin/onboarding-request",      label: "Onboarding Request",      Icon: UserCheck,        color: "#2dd4bf" },
+    { href: "/admin/discount",                label: "Discount",                Icon: Percent,          color: "#fb923c" },
+    { href: "/admin/coupons",                 label: "Coupons",                 Icon: Ticket,           color: "#f472b6" },
+    { href: "/admin/file-manager",            label: "File Manager",            Icon: FolderOpen,       color: "#fcd34d" },
 ];
 
 // Transaction sub-items
 const transactionChildren = [
-    { href: "/admin/all-transactions", label: "All Transactions", Icon: MdReceiptLong,  color: "#d8b4fe" },
-    { href: "/admin/withdraws",        label: "Withdraw",         Icon: MdAccountBalance, color: "#34d399" },
+    { href: "/admin/all-transactions", label: "All Transactions", Icon: ReceiptText,       color: "#d8b4fe" },
+    { href: "/admin/withdraws",        label: "Withdraw",         Icon: ArrowDownToLine,   color: "#34d399" },
 ];
 
 function NavLink({ href, label, Icon, color, collapsed, indent = false }) {
@@ -142,9 +142,9 @@ export default function Sidebar() {
                     }}
                 >
                     {collapsed ? (
-                        <MdChevronRight size={24} color="#ffffff" />
+                        <ChevronRight size={24} color="#ffffff" />
                     ) : (
-                        <MdChevronLeft size={24} color="#ffffff" />
+                        <ChevronLeft size={24} color="#ffffff" />
                     )}
                 </button>
             </div>
@@ -173,15 +173,15 @@ export default function Sidebar() {
                             cursor: "pointer",
                         }}
                     >
-                        <MdPayments size={22} color="#d8b4fe" style={{ flexShrink: 0 }} />
+                        <Banknote size={22} color="#d8b4fe" style={{ flexShrink: 0 }} />
                         {!collapsed && (
                             <>
                                 <span style={{ color: "#cbd5e1", fontSize: "15px", fontWeight: "500", marginLeft: "14px", whiteSpace: "nowrap", flex: 1, textAlign: "left" }}>
                                     Transactions
                                 </span>
                                 {txOpen
-                                    ? <MdExpandLess size={18} color="#94a3b8" />
-                                    : <MdExpandMore size={18} color="#94a3b8" />
+                                    ? <ChevronUp size={18} color="#94a3b8" />
+                                    : <ChevronDown size={18} color="#94a3b8" />
                                 }
                             </>
                         )}
@@ -202,3 +202,4 @@ export default function Sidebar() {
         </aside>
     );
 }
+
