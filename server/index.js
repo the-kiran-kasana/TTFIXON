@@ -3,8 +3,10 @@ const cors = require("cors");
 require("dotenv").config();
 
 const { connectDB } = require("./config/db");
-const authRoutes = require("./routes/auth.route");
-const vendorRoutes = require("./routes/vendor.route");
+const authRoutes     = require("./routes/auth.route");
+const userAuthRoutes = require("./routes/otpAuth.route");   // customer OTP login
+const usersRoutes    = require("./routes/user.route");       // admin: manage customers
+const vendorRoutes   = require("./routes/vendor.route");
 const servicemanRoutes = require("./routes/serviceman.route");
 const zoneRoutes = require("./routes/zone.route");
 const categoryRoutes = require("./routes/category.route");
@@ -36,6 +38,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth",       authRoutes);
+app.use("/api/user-auth",  userAuthRoutes);   // customer OTP login
+app.use("/api/users",      usersRoutes);       // admin: list/manage customers
 app.use("/api/vendors",    vendorRoutes);
 app.use("/api/servicemen", servicemanRoutes);
 app.use("/api/zones",      zoneRoutes);

@@ -1,5 +1,5 @@
 "use client";
-import { MdAdd, MdVisibility } from "react-icons/md";
+import { Plus, Eye, DollarSign, Gift, CheckCircle, Clock } from "lucide-react";
 
 const walletData = [
   { user: "Rahul Sharma", initials: "RS", type: "Customer", balance: "₹1,200", bonus: "₹200", reason: "Referral Reward", expiry: "31 Mar 2025", status: "Active" },
@@ -11,10 +11,10 @@ const walletData = [
 ];
 
 const stats = [
-  { label: "Total Wallet Balance", value: "₹1,24,500", icon: "💰" },
-  { label: "Bonus Issued", value: "₹8,200", icon: "🎁" },
-  { label: "Redeemed", value: "₹45,100", icon: "✅" },
-  { label: "Expired", value: "₹2,300", icon: "⏰" },
+  { label: "Total Wallet Balance", value: "₹1,24,500", Icon: DollarSign,  color: "#6366f1", bg: "#eef2ff" },
+  { label: "Bonus Issued",         value: "₹8,200",    Icon: Gift,         color: "#10b981", bg: "#ecfdf5" },
+  { label: "Redeemed",             value: "₹45,100",   Icon: CheckCircle,  color: "#f59e0b", bg: "#fffbeb" },
+  { label: "Expired",              value: "₹2,300",    Icon: Clock,        color: "#ef4444", bg: "#fef2f2" },
 ];
 
 const avatarColors = ["#6366f1", "#f59e0b", "#10b981", "#ef4444", "#3b82f6", "#8b5cf6"];
@@ -30,7 +30,7 @@ export default function WalletBonusPage() {
           <p style={{ fontSize: 14, color: "#94a3b8", margin: "4px 0 0" }}>Manage wallet balances and bonus credits</p>
         </div>
         <button style={{ background: "#6366f1", color: "#fff", padding: "10px 20px", borderRadius: 8, border: "none", cursor: "pointer", fontSize: 14, fontWeight: 600, display: "flex", alignItems: "center", gap: 6 }}>
-          <MdAdd size={18} /> Add Bonus
+          <Plus size={18} /> Add Bonus
         </button>
       </div>
 
@@ -42,7 +42,9 @@ export default function WalletBonusPage() {
                 <p style={{ fontSize: 13, color: "#94a3b8", margin: 0, fontWeight: 600 }}>{s.label}</p>
                 <p style={{ fontSize: 24, fontWeight: 700, color: "#0f172a", margin: "4px 0 0" }}>{s.value}</p>
               </div>
-              <div style={{ fontSize: 32 }}>{s.icon}</div>
+              <div style={{ width: 44, height: 44, borderRadius: 10, background: s.bg, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <s.Icon size={20} color={s.color} />
+              </div>
             </div>
           </div>
         ))}
@@ -77,7 +79,7 @@ export default function WalletBonusPage() {
                   <span style={{ background: w.status === "Active" ? "#dcfce7" : "#fee2e2", color: w.status === "Active" ? "#16a34a" : "#dc2626", borderRadius: 999, padding: "3px 10px", fontSize: 12, fontWeight: 600 }}>{w.status}</span>
                 </td>
                 <td style={{ padding: "14px 12px" }}>
-                  <button style={{ background: "#f1f5f9", border: "none", borderRadius: 6, padding: 6, cursor: "pointer", color: "#6366f1" }}><MdVisibility size={15} /></button>
+                  <button style={{ background: "#f1f5f9", border: "none", borderRadius: 6, padding: 6, cursor: "pointer", color: "#6366f1" }}><Eye size={15} /></button>
                 </td>
               </tr>
             ))}

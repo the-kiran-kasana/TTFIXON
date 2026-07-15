@@ -1,11 +1,11 @@
 "use client";
-import { TrendingUp, TrendingDown } from "lucide-react";
+import { TrendingUp, TrendingDown, DollarSign, CalendarDays, HardHat, Star } from "lucide-react";
 
 const stats = [
-  { title: "Revenue", value: "$45,231", change: "+12.5%", up: true, icon: "💰", color: "#6366f1" },
-  { title: "Bookings", value: "1,284", change: "+8.3%", up: true, icon: "📅", color: "#10b981" },
-  { title: "Providers", value: "156", change: "+5.2%", up: true, icon: "👷", color: "#f59e0b" },
-  { title: "Rating", value: "4.8", change: "+0.3%", up: true, icon: "⭐", color: "#ef4444" },
+  { title: "Revenue", value: "$45,231", change: "+12.5%", up: true, Icon: DollarSign, color: "#6366f1", bg: "#eef2ff" },
+  { title: "Bookings", value: "1,284", change: "+8.3%", up: true, Icon: CalendarDays, color: "#10b981", bg: "#ecfdf5" },
+  { title: "Providers", value: "156", change: "+5.2%", up: true, Icon: HardHat, color: "#f59e0b", bg: "#fffbeb" },
+  { title: "Rating", value: "4.8", change: "+0.3%", up: true, Icon: Star, color: "#ef4444", bg: "#fef2f2" },
 ];
 
 export default function StatCards() {
@@ -25,7 +25,9 @@ export default function StatCards() {
               <p style={{ fontSize: "13px", color: "#64748b", marginBottom: "6px", fontWeight: 500 }}>{s.title}</p>
               <p style={{ fontSize: "28px", fontWeight: 700, color: "#0f172a" }}>{s.value}</p>
             </div>
-            <div style={{ fontSize: "28px", background: "#f8fafc", borderRadius: "10px", padding: "8px", lineHeight: 1 }}>{s.icon}</div>
+            <div style={{ background: s.bg, borderRadius: "10px", padding: "10px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <s.Icon size={22} color={s.color} />
+            </div>
           </div>
           <div style={{ marginTop: "12px", display: "flex", alignItems: "center", gap: "4px" }}>
             {s.up

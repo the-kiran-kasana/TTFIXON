@@ -99,14 +99,15 @@ const verifyOtp = async (req, res, next) => {
       message: "Login successful",
       token,
       user: {
-        id: user._id,
-        name: user.name,
-        phone: user.phone,
-        email: user.email,
-        role: user.role,
+        _id:        user._id,
+        name:       user.name,
+        phone:      user.phone,
+        email:      user.email,
+        role:       user.role,
+        location:   user.location,
         categories: user.categories,
         lastLoginAt: user.lastLoginAt,
-        loginCount: user.loginCount,
+        loginCount:  user.loginCount,
       },
     });
   } catch (err) {

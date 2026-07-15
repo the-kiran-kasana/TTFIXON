@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { MdAdd, MdEdit, MdDelete } from "react-icons/md";
+import { Plus, Pencil, Trash2, Package, CheckCircle, PauseCircle } from "lucide-react";
 import { fetchCategories, fetchCategoryStats, createCategory, updateCategory, deleteCategory, toggleCategory, clearActionState } from "@/store/slices/categorySlice";
 import { useAdminAuth } from "@/context/admin/AuthContext";
 
@@ -159,7 +159,7 @@ function Toast({ message, type, onClose }) {
   useEffect(() => { const t = setTimeout(onClose, 3500); return () => clearTimeout(t); }, [onClose]);
   return (
     <div style={{ position: "fixed", bottom: "24px", right: "24px", zIndex: 2000, background: type === "success" ? "#16a34a" : "#dc2626", color: "#fff", padding: "12px 20px", borderRadius: "10px", fontSize: "14px", fontWeight: "600", boxShadow: "0 4px 12px rgba(0,0,0,0.15)", display: "flex", alignItems: "center", gap: "10px" }}>
-      {type === "success" ? "✅" : "❌"} {message}
+          {type === "success" ? "" : ""} {message}
       <button onClick={onClose} style={{ background: "none", border: "none", color: "#fff", fontSize: "16px", cursor: "pointer", marginLeft: "4px" }}>×</button>
     </div>
   );
@@ -206,9 +206,9 @@ export default function CategoriesPage() {
   const handleToggle = (cat) => dispatch(toggleCategory({ token, id: cat._id }));
 
   const statCards = [
-    { label: "Total Categories", value: stats.total,    icon: "📦", color: "#6366f1", bg: "#eef2ff" },
-    { label: "Active",           value: stats.active,   icon: "✅", color: "#10b981", bg: "#ecfdf5" },
-    { label: "Inactive",         value: stats.inactive, icon: "⏸️", color: "#ef4444", bg: "#fef2f2" },
+    { label: "Total Categories", value: stats.total,    Icon: Package,      color: "#6366f1", bg: "#eef2ff" },
+    { label: "Active",           value: stats.active,   Icon: CheckCircle,  color: "#10b981", bg: "#ecfdf5" },
+    { label: "Inactive",         value: stats.inactive, Icon: PauseCircle,  color: "#ef4444", bg: "#fef2f2" },
   ];
 
   return (
@@ -240,7 +240,7 @@ export default function CategoriesPage() {
         </div>
         <button onClick={() => setModal({ mode: "create" })}
           style={{ background: "#6366f1", color: "#fff", padding: "10px 20px", borderRadius: 8, border: "none", cursor: "pointer", fontSize: 14, fontWeight: 600, display: "flex", alignItems: "center", gap: 6 }}>
-          <MdAdd size={18} /> Add Category
+          <Plus size={18} /> Add Category
         </button>
       </div>
 
@@ -248,7 +248,9 @@ export default function CategoriesPage() {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))", gap: 16, marginBottom: 24 }}>
         {statCards.map((s) => (
           <div key={s.label} style={{ ...card, display: "flex", alignItems: "center", gap: 14 }}>
-            <div style={{ width: 44, height: 44, borderRadius: 10, background: s.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>{s.icon}</div>
+            <div style={{ width: 44, height: 44, borderRadius: 10, background: s.bg, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <s.Icon size={20} color={s.color} />
+            </div>
             <div>
               <p style={{ fontSize: 12, color: "#64748b", margin: 0 }}>{s.label}</p>
               <p style={{ fontSize: 22, fontWeight: 700, color: s.color, margin: "2px 0 0" }}>{statsLoading ? "—" : s.value}</p>
@@ -256,10 +258,10 @@ export default function CategoriesPage() {
           </div>
         ))}
         <div style={{ ...card, display: "flex", alignItems: "center", gap: 10 }}>
-          <input placeholder="🔍 Search categories…" value={search} onChange={(e) => setSearch(e.target.value)}
+          <input placeholder="Search categories…" value={search} onChange={(e) => setSearch(e.target.value)}
             style={{ ...inputStyle, margin: 0 }} />
           <button onClick={load} style={{ padding: "9px 12px", background: "#f1f5f9", border: "1px solid #e2e8f0", borderRadius: 8, fontSize: 13, cursor: "pointer", color: "#475569", fontWeight: 600, whiteSpace: "nowrap" }}>
-            🔄
+            Refresh
           </button>
         </div>
       </div>
@@ -316,11 +318,11 @@ export default function CategoriesPage() {
                 <div style={{ display: "flex", gap: 8 }}>
                   <button onClick={() => setModal({ mode: "edit", cat })}
                     style={{ flex: 1, background: "#f1f5f9", border: "none", borderRadius: 8, padding: "8px 0", cursor: "pointer", color: "#475569", fontSize: 13, fontWeight: 600, display: "flex", alignItems: "center", justifyContent: "center", gap: 5 }}>
-                    <MdEdit size={14} /> Edit
+                    <Pencil size={14} /> Edit
                   </button>
                   <button onClick={() => setDeleteTarget(cat)}
                     style={{ background: "#fee2e2", border: "none", borderRadius: 8, padding: "8px 14px", cursor: "pointer", color: "#ef4444", display: "flex", alignItems: "center" }}>
-                    <MdDelete size={15} />
+                    <Trash2 size={15} />
                   </button>
                 </div>
               </div>

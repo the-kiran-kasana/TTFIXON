@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { Users, CheckCircle, PauseCircle, Building2 } from 'lucide-react';
 
 const employees = [
   { id:'EMP001', name:'Arjun Mehta', role:'Operations Manager', dept:'Operations', phone:'+91 98765 43210', email:'arjun@ondemand.com', doj:'Jan 15, 2024', salary:'₹55,000', status:'Active' },
@@ -28,12 +29,14 @@ export default function EmployeeList() {
 
       {/* Stats */}
       <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(180px,1fr))', gap:'16px' }}>
-        {[{ l:'Total Employees', v:employees.length, icon:'👥', color:'#6366f1', bg:'#eef2ff' },
-          { l:'Active', v:employees.filter(e=>e.status==='Active').length, icon:'✅', color:'#10b981', bg:'#ecfdf5' },
-          { l:'Inactive', v:employees.filter(e=>e.status==='Inactive').length, icon:'⏸️', color:'#ef4444', bg:'#fef2f2' },
-          { l:'Departments', v:4, icon:'🏢', color:'#f59e0b', bg:'#fffbeb' }].map(s => (
+        {[{ l:'Total Employees', v:employees.length,                              Icon:Users,       color:'#6366f1', bg:'#eef2ff' },
+          { l:'Active',          v:employees.filter(e=>e.status==='Active').length,   Icon:CheckCircle, color:'#10b981', bg:'#ecfdf5' },
+          { l:'Inactive',        v:employees.filter(e=>e.status==='Inactive').length, Icon:PauseCircle, color:'#ef4444', bg:'#fef2f2' },
+          { l:'Departments',     v:4,                                               Icon:Building2,   color:'#f59e0b', bg:'#fffbeb' }].map(s => (
           <div key={s.l} style={{ ...card, display:'flex', alignItems:'center', gap:'14px' }}>
-            <div style={{ width:'44px', height:'44px', borderRadius:'10px', background:s.bg, display:'flex', alignItems:'center', justifyContent:'center', fontSize:'20px' }}>{s.icon}</div>
+            <div style={{ width:'44px', height:'44px', borderRadius:'10px', background:s.bg, display:'flex', alignItems:'center', justifyContent:'center' }}>
+              <s.Icon size={20} color={s.color} />
+            </div>
             <div>
               <p style={{ fontSize:'12px', color:'#64748b', margin:0 }}>{s.l}</p>
               <p style={{ fontSize:'22px', fontWeight:'700', color:s.color, margin:'2px 0 0' }}>{s.v}</p>
@@ -46,7 +49,7 @@ export default function EmployeeList() {
       <div style={card}>
         <div style={{ display:'flex', justifyContent:'space-between', marginBottom:'16px' }}>
           <h3 style={{ fontSize:'15px', fontWeight:'700', color:'#0f172a', margin:0 }}>All Employees</h3>
-          <input placeholder="🔍 Search..." value={search} onChange={e=>setSearch(e.target.value)} style={{ padding:'8px 14px', border:'1px solid #e2e8f0', borderRadius:'8px', fontSize:'13px', outline:'none' }} />
+          <input placeholder="Search..." value={search} onChange={e=>setSearch(e.target.value)} style={{ padding:'8px 14px', border:'1px solid #e2e8f0', borderRadius:'8px', fontSize:'13px', outline:'none' }} />
         </div>
         <div style={{ overflowX:'auto' }}>
           <table style={{ width:'100%', borderCollapse:'collapse', fontSize:'13px' }}>

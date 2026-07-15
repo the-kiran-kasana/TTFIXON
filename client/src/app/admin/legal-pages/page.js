@@ -31,7 +31,7 @@ export default function LegalPages() {
           {pages.map(p => (
             <div key={p.id} onClick={() => setSelected(p)} style={{ ...card, cursor:'pointer', borderLeft:`4px solid ${selected.id===p.id?'#6366f1':'transparent'}`, background:selected.id===p.id?'#eef2ff':'#fff', transition:'all 0.2s', padding:'16px 20px' }}>
               <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
-                <p style={{ fontWeight:'700', color:'#0f172a', margin:0, fontSize:'14px' }}>📄 {p.title}</p>
+                <p style={{ fontWeight:'700', color:'#0f172a', margin:0, fontSize:'14px' }}>{p.title}</p>
                 <span style={{ background:p.status==='Published'?'#dcfce7':'#fef9c3', color:p.status==='Published'?'#16a34a':'#b45309', padding:'2px 8px', borderRadius:'999px', fontSize:'11px', fontWeight:'600' }}>{p.status}</span>
               </div>
               <p style={{ fontSize:'12px', color:'#94a3b8', margin:'4px 0 0' }}>Updated: {p.lastUpdated} · {p.words} words</p>
@@ -42,7 +42,7 @@ export default function LegalPages() {
         <div style={card}>
           <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'20px' }}>
             <div>
-              <h3 style={{ fontSize:'16px', fontWeight:'700', color:'#0f172a', margin:0 }}>📄 {selected.title}</h3>
+              <h3 style={{ fontSize:'16px', fontWeight:'700', color:'#0f172a', margin:0 }}>{selected.title}</h3>
               <p style={{ fontSize:'13px', color:'#94a3b8', margin:'4px 0 0' }}>Last updated: {selected.lastUpdated} · {selected.words} words</p>
             </div>
             <div style={{ display:'flex', gap:'8px' }}>
@@ -56,7 +56,7 @@ export default function LegalPages() {
             style={{ width:'100%', border:'1px solid #e2e8f0', borderRadius:'8px', padding:'16px', fontSize:'13px', color:'#374151', outline:'none', resize:'vertical', lineHeight:'1.7', boxSizing:'border-box', fontFamily:'Inter, sans-serif' }}
           />
           <div style={{ display:'flex', gap:'10px', marginTop:'14px' }}>
-            <button style={{ flex:1, background:'#6366f1', color:'#fff', border:'none', borderRadius:'8px', padding:'10px', fontWeight:'700', fontSize:'13px', cursor:'pointer' }}>💾 Save Changes</button>
+            <button style={{ flex:1, background:'#6366f1', color:'#fff', border:'none', borderRadius:'8px', padding:'10px', fontWeight:'700', fontSize:'13px', cursor:'pointer' }}>Save Changes</button>
             <button style={{ background:'#f8fafc', color:'#64748b', border:'1px solid #e2e8f0', borderRadius:'8px', padding:'10px 20px', fontWeight:'600', fontSize:'13px', cursor:'pointer' }}>Preview</button>
           </div>
         </div>

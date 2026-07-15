@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { MdMailOutline, MdKeyboardArrowDown, MdPerson, MdSettings, MdLogout, MdChat } from "react-icons/md";
+import { Mail, ChevronDown, User, Settings, LogOut } from "lucide-react";
 import { useSidebar } from "../../../context/admin/SidebarContext";
 import { useAdminAuth } from "@/context/admin/AuthContext";
 
@@ -55,7 +55,7 @@ export default function Navbar() {
                         onClick={() => setShowMessages(!showMessages)}
                         className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 p-2 rounded-md transition-colors relative"
                     >
-                        <MdMailOutline className="text-2xl" />
+                        <Mail size={22} className="text-gray-600" />
                         {/* Notification badge */}
                         <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
                     </button>
@@ -144,8 +144,9 @@ export default function Navbar() {
                             className="rounded-full object-cover"
                             style={{ width: "36px", height: "36px" }}
                         />
-                        <MdKeyboardArrowDown
-                            className="text-gray-500 text-lg transition-transform"
+                        <ChevronDown
+                            size={18}
+                            className="text-gray-500 transition-transform"
                             style={{ transform: showProfile ? "rotate(180deg)" : "rotate(0deg)" }}
                         />
                     </div>
@@ -172,7 +173,7 @@ export default function Navbar() {
                                     className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
                                     onClick={() => setShowProfile(false)}
                                 >
-                                    <MdPerson className="text-lg text-gray-500" />
+                                    <User size={18} className="text-gray-500" />
                                     My Profile
                                 </Link>
                                 
@@ -181,7 +182,7 @@ export default function Navbar() {
                                     className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
                                     onClick={() => setShowProfile(false)}
                                 >
-                                    <MdSettings className="text-lg text-gray-500" />
+                                    <Settings size={18} className="text-gray-500" />
                                     Settings
                                 </Link>
                             </div>
@@ -191,7 +192,7 @@ export default function Navbar() {
                                     className="flex items-center gap-3 w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
                                     onClick={handleLogout}
                                 >
-                                    <MdLogout className="text-lg" />
+                                    <LogOut size={18} className="text-red-500" />
                                     Logout
                                 </button>
                             </div>

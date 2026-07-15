@@ -1,4 +1,6 @@
 'use client';
+import { Medal, Award, Trophy, Star } from 'lucide-react';
+
 const customers = [
   { name:'Sneha Iyer', points:620, tier:'Gold', earned:'₹6,200', redeemed:'₹1,800', expiry:'Dec 31, 2026' },
   { name:'Rahul Sharma', points:320, tier:'Silver', earned:'₹3,200', redeemed:'₹500', expiry:'Dec 31, 2026' },
@@ -19,12 +21,14 @@ export default function LoyaltyPoint() {
 
       {/* Tier Cards */}
       <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))', gap:'16px' }}>
-        {[{ tier:'Gold', min:500, users:customers.filter(c=>c.tier==='Gold').length, icon:'🥇', color:'#b45309', bg:'#fffbeb' },
-          { tier:'Silver', min:200, users:customers.filter(c=>c.tier==='Silver').length, icon:'🥈', color:'#475569', bg:'#f1f5f9' },
-          { tier:'Bronze', min:0, users:customers.filter(c=>c.tier==='Bronze').length, icon:'🥉', color:'#92400e', bg:'#fef3c7' },
-          { tier:'Total Points', min:null, users:'1,245', icon:'⭐', color:'#6366f1', bg:'#eef2ff' }].map(t => (
+        {[{ tier:'Gold',        min:500,  users:customers.filter(c=>c.tier==='Gold').length,   Icon:Medal,  color:'#b45309', bg:'#fffbeb' },
+          { tier:'Silver',      min:200,  users:customers.filter(c=>c.tier==='Silver').length, Icon:Award,  color:'#475569', bg:'#f1f5f9' },
+          { tier:'Bronze',      min:0,    users:customers.filter(c=>c.tier==='Bronze').length, Icon:Trophy, color:'#92400e', bg:'#fef3c7' },
+          { tier:'Total Points',min:null, users:'1,245',                                       Icon:Star,   color:'#6366f1', bg:'#eef2ff' }].map(t => (
           <div key={t.tier} style={{ ...card, borderTop:`3px solid ${t.color}` }}>
-            <div style={{ fontSize:'28px', marginBottom:'8px' }}>{t.icon}</div>
+            <div style={{ width:'44px', height:'44px', borderRadius:'10px', background:t.bg, display:'flex', alignItems:'center', justifyContent:'center', marginBottom:'8px' }}>
+              <t.Icon size={22} color={t.color} />
+            </div>
             <p style={{ fontWeight:'700', color:'#0f172a', fontSize:'15px', margin:0 }}>{t.tier}</p>
             {t.min !== null && <p style={{ fontSize:'12px', color:'#94a3b8', margin:'2px 0 8px' }}>Min {t.min} pts</p>}
             <p style={{ fontSize:'24px', fontWeight:'700', color:t.color, margin:0 }}>{t.users} {t.min !== null ? 'users' : 'pts'}</p>

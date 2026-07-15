@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { User, CheckCircle } from 'lucide-react';
 
 export default function AddNewEmployee() {
   const [form, setForm] = useState({ name:'', email:'', phone:'', role:'', department:'', doj:'', salary:'', address:'', status:'Active' });
@@ -71,15 +72,17 @@ export default function AddNewEmployee() {
         {/* Right — Preview */}
         <div style={{ display:'flex', flexDirection:'column', gap:'20px' }}>
           <div style={{ ...card, textAlign:'center' }}>
-            <div style={{ width:'80px', height:'80px', borderRadius:'50%', background:'#eef2ff', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'32px', margin:'0 auto 12px' }}>👤</div>
+            <div style={{ width:'80px', height:'80px', borderRadius:'50%', background:'#eef2ff', display:'flex', alignItems:'center', justifyContent:'center', margin:'0 auto 12px' }}>
+              <User size={36} color="#6366f1" />
+            </div>
             <p style={{ fontWeight:'700', color:'#0f172a', fontSize:'16px' }}>{form.name || 'Employee Name'}</p>
             <p style={{ color:'#64748b', fontSize:'13px' }}>{form.role || 'Role not set'}</p>
             <p style={{ color:'#94a3b8', fontSize:'12px', marginTop:'4px' }}>{form.department || 'Department'}</p>
             <div style={{ marginTop:'16px', padding:'12px', background:'#f8fafc', borderRadius:'8px', fontSize:'13px', color:'#64748b', textAlign:'left' }}>
-              <p>📧 {form.email || '—'}</p>
-              <p>📱 {form.phone || '—'}</p>
-              <p>📅 DOJ: {form.doj || '—'}</p>
-              <p>💰 ₹{form.salary || '—'}/month</p>
+              <p>Email: {form.email || '—'}</p>
+              <p>Phone: {form.phone || '—'}</p>
+              <p>DOJ: {form.doj || '—'}</p>
+              <p>Salary: ₹{form.salary || '—'}/month</p>
             </div>
           </div>
 
@@ -95,7 +98,7 @@ export default function AddNewEmployee() {
 
           <div style={{ display:'flex', flexDirection:'column', gap:'10px' }}>
             <button style={{ background:'#6366f1', color:'#fff', border:'none', borderRadius:'8px', padding:'12px', fontWeight:'700', fontSize:'14px', cursor:'pointer' }}>
-              ✅ Add Employee
+              Add Employee
             </button>
             <button style={{ background:'#fff', color:'#64748b', border:'1px solid #e2e8f0', borderRadius:'8px', padding:'12px', fontWeight:'600', fontSize:'14px', cursor:'pointer' }}>
               Cancel

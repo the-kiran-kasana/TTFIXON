@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { ClipboardList, CalendarDays, XCircle, KeyRound, Siren, CheckCircle, ShieldCheck, Camera, Image, Video, MapPin } from 'lucide-react';
 
 const bookings = [
   { id: 'BK001', customer: 'Rahul Sharma', service: 'Plumbing', provider: 'Ravi Kumar', amount: '₹850', date: '2026-07-09', type: 'Instant', otp: '4521', status: 'Completed', tracking: 'Arrived' },
@@ -27,16 +28,15 @@ const trackingStyles = {
 };
 
 const stats = [
-  { label: 'Total Bookings', value: '1,284', icon: '📋', color: '#6366f1', bg: '#eef2ff', change: '+8.3%' },
-  // { label: 'Instant Bookings', value: '842', icon: '⚡', color: '#f59e0b', bg: '#fffbeb', change: '+5.1%' },
-  { label: 'Scheduled', value: '442', icon: '📅', color: '#10b981', bg: '#ecfdf5', change: '+12.4%' },
-  { label: 'Cancelled', value: '45', icon: '❌', color: '#ef4444', bg: '#fef2f2', change: '-2.1%' },
+  { label: 'Total Bookings', value: '1,284', Icon: ClipboardList, color: '#6366f1', bg: '#eef2ff', change: '+8.3%' },
+  { label: 'Scheduled', value: '442', Icon: CalendarDays, color: '#10b981', bg: '#ecfdf5', change: '+12.4%' },
+  { label: 'Cancelled', value: '45', Icon: XCircle, color: '#ef4444', bg: '#fef2f2', change: '-2.1%' },
 ];
 
 const proofUploads = [
-  { id: 'BK001', customer: 'Rahul Sharma', service: 'Plumbing', before: '✅ Uploaded', after: '✅ Uploaded', video: '✅ Uploaded', gps: '19.0760° N, 72.8777° E', timestamp: '09 Jul 2026, 10:32 AM', status: 'Verified' },
-  { id: 'BK002', customer: 'Priya Mehta', service: 'Electrical', before: '✅ Uploaded', after: '⏳ Pending', video: '⏳ Pending', gps: '18.9220° N, 72.8347° E', timestamp: '09 Jul 2026, 11:15 AM', status: 'Partial' },
-  { id: 'BK005', customer: 'Vikram Joshi', service: 'Interior', before: '✅ Uploaded', after: '✅ Uploaded', video: '✅ Uploaded', gps: '19.1136° N, 72.8697° E', timestamp: '09 Jul 2026, 09:00 AM', status: 'Verified' },
+  { id: 'BK001', customer: 'Rahul Sharma', service: 'Plumbing', before: 'Uploaded', after: 'Uploaded', video: 'Uploaded', gps: '19.0760° N, 72.8777° E', timestamp: '09 Jul 2026, 10:32 AM', status: 'Verified' },
+  { id: 'BK002', customer: 'Priya Mehta', service: 'Electrical', before: 'Uploaded', after: 'Pending', video: 'Pending', gps: '18.9220° N, 72.8347° E', timestamp: '09 Jul 2026, 11:15 AM', status: 'Partial' },
+  { id: 'BK005', customer: 'Vikram Joshi', service: 'Interior', before: 'Uploaded', after: 'Uploaded', video: 'Uploaded', gps: '19.1136° N, 72.8697° E', timestamp: '09 Jul 2026, 09:00 AM', status: 'Verified' },
 ];
 
 const card = {
@@ -71,7 +71,9 @@ export default function BookingPage() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px,1fr))', gap: '16px' }}>
         {stats.map(s => (
           <div key={s.label} style={{ ...card, display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <div style={{ width: '48px', height: '48px', borderRadius: '10px', background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', flexShrink: 0 }}>{s.icon}</div>
+            <div style={{ width: '48px', height: '48px', borderRadius: '10px', background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <s.Icon size={22} color={s.color} />
+            </div>
             <div>
               <p style={{ fontSize: '12px', color: '#64748b', fontWeight: 500, margin: 0 }}>{s.label}</p>
               <p style={{ fontSize: '22px', fontWeight: 700, color: '#0f172a', margin: '2px 0 0' }}>{s.value}</p>
@@ -84,10 +86,10 @@ export default function BookingPage() {
       {/* Tabs */}
       <div style={{ display: 'flex', gap: '8px', borderBottom: '2px solid #f1f5f9', paddingBottom: '0' }}>
         {[
-          { key: 'bookings', label: '📋 All Bookings' },
-          { key: 'tracking', label: '📍 Live Tracking' },
-          { key: 'otp', label: '🔐 OTP & Safety' },
-          { key: 'proof', label: '📸 Work Proof' },
+          { key: 'bookings', label: 'All Bookings' },
+          { key: 'tracking', label: 'Live Tracking' },
+          { key: 'otp', label: 'OTP & Safety' },
+          { key: 'proof', label: 'Work Proof' },
         ].map(t => (
           <button key={t.key} onClick={() => setActiveTab(t.key)} style={{
             padding: '10px 18px', border: 'none', background: 'none', fontWeight: '600',
@@ -113,7 +115,7 @@ export default function BookingPage() {
                 }}>{f}</button>
               ))}
             </div>
-            <input placeholder="🔍 Search bookings..." style={{ padding: '8px 14px', border: '1px solid #e2e8f0', borderRadius: '8px', fontSize: '13px', outline: 'none' }} />
+            <input placeholder="Search bookings..." style={{ padding: '8px 14px', border: '1px solid #e2e8f0', borderRadius: '8px', fontSize: '13px', outline: 'none' }} />
           </div>
           <div style={{ overflowX: 'auto' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px' }}>
@@ -131,9 +133,6 @@ export default function BookingPage() {
                     <td style={{ padding: '12px', fontWeight: '500', color: '#0f172a' }}>{b.customer}</td>
                     <td style={{ padding: '12px', color: '#475569' }}>{b.service}</td>
                     <td style={{ padding: '12px', color: '#475569' }}>{b.provider}</td>
-                    {/* <td style={{ padding: '12px' }}>
-                      <span style={{ background: b.type === 'Instant' ? '#fef3c7' : '#e0e7ff', color: b.type === 'Instant' ? '#b45309' : '#4338ca', padding: '2px 8px', borderRadius: '999px', fontSize: '11px', fontWeight: '600' }}>{b.type}</span>
-                    </td> */}
                     <td style={{ padding: '12px', fontWeight: '600', color: '#0f172a' }}>{b.amount}</td>
                     <td style={{ padding: '12px', color: '#64748b' }}>{b.date}</td>
                     <td style={{ padding: '12px' }}>
@@ -157,7 +156,7 @@ export default function BookingPage() {
       {activeTab === 'tracking' && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div style={{ ...card, background: 'linear-gradient(135deg,#1e293b,#334155)', color: '#fff', padding: '20px' }}>
-            <p style={{ fontWeight: '700', fontSize: '16px', margin: '0 0 4px' }}>📍 Live GPS Tracking</p>
+            <p style={{ fontWeight: '700', fontSize: '16px', margin: '0 0 4px' }}>Live GPS Tracking</p>
             <p style={{ fontSize: '13px', color: '#94a3b8', margin: 0 }}>Real-time provider location with ETA for active bookings</p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: '16px' }}>
@@ -168,11 +167,11 @@ export default function BookingPage() {
                   <span style={{ ...statusStyles[b.status], padding: '2px 10px', borderRadius: '999px', fontSize: '12px', fontWeight: '600' }}>{b.status}</span>
                 </div>
                 <p style={{ margin: '0 0 4px', fontWeight: '600', color: '#0f172a' }}>{b.customer}</p>
-                <p style={{ margin: '0 0 4px', fontSize: '13px', color: '#64748b' }}>🔧 {b.service} · 👷 {b.provider}</p>
-                <p style={{ margin: '0 0 8px', fontSize: '13px', color: '#64748b' }}>📍 Status: <strong>{b.tracking}</strong></p>
+                <p style={{ margin: '0 0 4px', fontSize: '13px', color: '#64748b' }}>{b.service} · {b.provider}</p>
+                <p style={{ margin: '0 0 8px', fontSize: '13px', color: '#64748b' }}>Status: <strong>{b.tracking}</strong></p>
                 <div style={{ background: '#f1f5f9', borderRadius: '8px', padding: '10px', fontSize: '12px', color: '#475569' }}>
-                  <p style={{ margin: '0 0 4px' }}>🗺️ Estimated Arrival: <strong>12 min</strong></p>
-                  <p style={{ margin: 0 }}>📱 OTP: <strong style={{ color: '#6366f1', letterSpacing: '2px' }}>{b.otp}</strong></p>
+                  <p style={{ margin: '0 0 4px' }}>Estimated Arrival: <strong>12 min</strong></p>
+                  <p style={{ margin: 0 }}>OTP: <strong style={{ color: '#6366f1', letterSpacing: '2px' }}>{b.otp}</strong></p>
                 </div>
                 <button style={{ marginTop: '12px', width: '100%', background: '#6366f1', color: '#fff', border: 'none', borderRadius: '8px', padding: '8px', fontWeight: '600', fontSize: '13px', cursor: 'pointer' }}>
                   View on Map
@@ -188,13 +187,15 @@ export default function BookingPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: '16px' }}>
             {[
-              { icon: '🔑', label: 'OTP Verified Today', value: '38', color: '#10b981', bg: '#ecfdf5' },
-              { icon: '🚨', label: 'SOS Alerts Today', value: '0', color: '#ef4444', bg: '#fef2f2' },
-              { icon: '✅', label: 'Jobs Started via OTP', value: '34', color: '#6366f1', bg: '#eef2ff' },
-              { icon: '🛡️', label: 'Jobs Ended via OTP', value: '31', color: '#f59e0b', bg: '#fffbeb' },
+              { Icon: KeyRound,    label: 'OTP Verified Today',   value: '38', color: '#10b981', bg: '#ecfdf5' },
+              { Icon: Siren,       label: 'SOS Alerts Today',     value: '0',  color: '#ef4444', bg: '#fef2f2' },
+              { Icon: CheckCircle, label: 'Jobs Started via OTP', value: '34', color: '#6366f1', bg: '#eef2ff' },
+              { Icon: ShieldCheck, label: 'Jobs Ended via OTP',   value: '31', color: '#f59e0b', bg: '#fffbeb' },
             ].map(s => (
               <div key={s.label} style={{ ...card, display: 'flex', alignItems: 'center', gap: '14px' }}>
-                <div style={{ width: '48px', height: '48px', borderRadius: '10px', background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px' }}>{s.icon}</div>
+                <div style={{ width: '48px', height: '48px', borderRadius: '10px', background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <s.Icon size={22} color={s.color} />
+                </div>
                 <div>
                   <p style={{ fontSize: '12px', color: '#64748b', margin: 0 }}>{s.label}</p>
                   <p style={{ fontSize: '26px', fontWeight: '700', color: s.color, margin: '2px 0 0' }}>{s.value}</p>
@@ -203,7 +204,7 @@ export default function BookingPage() {
             ))}
           </div>
           <div style={card}>
-            <h3 style={{ fontWeight: '700', color: '#0f172a', marginBottom: '16px', fontSize: '15px' }}>🔐 OTP Verification Log</h3>
+            <h3 style={{ fontWeight: '700', color: '#0f172a', marginBottom: '16px', fontSize: '15px' }}>OTP Verification Log</h3>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px' }}>
               <thead>
                 <tr style={{ borderBottom: '2px solid #f1f5f9' }}>
@@ -220,7 +221,9 @@ export default function BookingPage() {
                     <td style={{ padding: '12px', color: '#475569' }}>{b.provider}</td>
                     <td style={{ padding: '12px', fontWeight: '700', letterSpacing: '2px', color: '#6366f1' }}>{b.otp}</td>
                     <td style={{ padding: '12px', color: '#64748b' }}>{b.date} 09:00</td>
-                    <td style={{ padding: '12px', fontWeight: '700', color: '#10b981' }}>{b.status === 'Completed' ? '✅ Used' : '⏳ Pending'}</td>
+                    <td style={{ padding: '12px', fontWeight: '700', color: b.status === 'Completed' ? '#10b981' : '#f59e0b' }}>
+                      {b.status === 'Completed' ? 'Used' : 'Pending'}
+                    </td>
                     <td style={{ padding: '12px' }}>
                       <span style={{ ...statusStyles[b.status], padding: '3px 10px', borderRadius: '999px', fontSize: '12px', fontWeight: '600' }}>{b.status}</span>
                     </td>
@@ -237,13 +240,15 @@ export default function BookingPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: '16px' }}>
             {[
-              { icon: '📸', label: 'Before Photos', value: '38', color: '#6366f1', bg: '#eef2ff' },
-              { icon: '🖼️', label: 'After Photos', value: '35', color: '#10b981', bg: '#ecfdf5' },
-              { icon: '🎥', label: 'Video Proofs', value: '29', color: '#f59e0b', bg: '#fffbeb' },
-              { icon: '📍', label: 'GPS Verified', value: '38', color: '#3b82f6', bg: '#eff6ff' },
+              { Icon: Camera,     label: 'Before Photos', value: '38', color: '#6366f1', bg: '#eef2ff' },
+              { Icon: Image,      label: 'After Photos',  value: '35', color: '#10b981', bg: '#ecfdf5' },
+              { Icon: Video,      label: 'Video Proofs',  value: '29', color: '#f59e0b', bg: '#fffbeb' },
+              { Icon: MapPin,     label: 'GPS Verified',  value: '38', color: '#3b82f6', bg: '#eff6ff' },
             ].map(s => (
               <div key={s.label} style={{ ...card, display: 'flex', alignItems: 'center', gap: '14px' }}>
-                <div style={{ width: '48px', height: '48px', borderRadius: '10px', background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px' }}>{s.icon}</div>
+                <div style={{ width: '48px', height: '48px', borderRadius: '10px', background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <s.Icon size={22} color={s.color} />
+                </div>
                 <div>
                   <p style={{ fontSize: '12px', color: '#64748b', margin: 0 }}>{s.label}</p>
                   <p style={{ fontSize: '26px', fontWeight: '700', color: s.color, margin: '2px 0 0' }}>{s.value}</p>
@@ -252,7 +257,7 @@ export default function BookingPage() {
             ))}
           </div>
           <div style={card}>
-            <h3 style={{ fontWeight: '700', color: '#0f172a', marginBottom: '16px', fontSize: '15px' }}>📸 Work Proof & GPS Validation</h3>
+            <h3 style={{ fontWeight: '700', color: '#0f172a', marginBottom: '16px', fontSize: '15px' }}>Work Proof & GPS Validation</h3>
             <div style={{ overflowX: 'auto' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px' }}>
                 <thead>
@@ -269,8 +274,8 @@ export default function BookingPage() {
                       <td style={{ padding: '12px', color: '#0f172a', fontWeight: '500' }}>{p.customer}</td>
                       <td style={{ padding: '12px', color: '#475569' }}>{p.service}</td>
                       <td style={{ padding: '12px', color: '#10b981', fontWeight: '500' }}>{p.before}</td>
-                      <td style={{ padding: '12px', color: p.after.includes('Pending') ? '#f59e0b' : '#10b981', fontWeight: '500' }}>{p.after}</td>
-                      <td style={{ padding: '12px', color: p.video.includes('Pending') ? '#f59e0b' : '#10b981', fontWeight: '500' }}>{p.video}</td>
+                      <td style={{ padding: '12px', color: p.after === 'Pending' ? '#f59e0b' : '#10b981', fontWeight: '500' }}>{p.after}</td>
+                      <td style={{ padding: '12px', color: p.video === 'Pending' ? '#f59e0b' : '#10b981', fontWeight: '500' }}>{p.video}</td>
                       <td style={{ padding: '12px', color: '#64748b', fontSize: '12px' }}>{p.gps}</td>
                       <td style={{ padding: '12px', color: '#64748b', fontSize: '12px', whiteSpace: 'nowrap' }}>{p.timestamp}</td>
                       <td style={{ padding: '12px' }}>
@@ -292,4 +297,3 @@ export default function BookingPage() {
     </div>
   );
 }
-
