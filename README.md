@@ -1,14 +1,23 @@
-# TTFixon 🚀
+# TTFixon – On-Demand Service Booking Platform 🚀
 
-TTFixon is an on-demand service booking platform that connects customers with available service providers based on their location. The platform allows users to browse services, find nearby service providers, book services, and make online payments.
-
+**TTFixon** is an on-demand service booking platform designed to make it easier for users to find and book service providers based on their location.
+The application allows users to browse available services, find service providers operating in their area, select a suitable provider, schedule a service, and complete the booking through an online payment system.
+The project was developed to provide a simple and convenient service-booking experience while giving service providers and administrators tools to manage bookings and services.
 
 
 ## 🌐 Live Website
 
      https://ttfixon.in/
 
-     
+### 🎯 Core Objectives
+
+- Make local service booking simple and convenient.
+- Connect customers with available service providers.
+- Provide location-based service discovery.
+- Allow users to schedule and manage bookings.
+- Support secure online payments.
+- Provide an administration interface for managing the platform.
+
 
 ## 📌 Features
 
@@ -65,6 +74,19 @@ Payment history
 Analytics and reporting
 
 
+🚀 Setup & Installation
+
+1. Clone the Repository
+2. git clone <YOUR_GITHUB_REPOSITORY_URLhttps://github.com/the-kiran-kasana/TTFIXON/>
+3. cd TTFixon
+4. cd frontend
+5. npm install
+7. cd backend
+8. npm install
+
+▶️ Running the Project
+               
+                 npm run dev
 ## 📂 Project Structure
 
       TTFixon/
