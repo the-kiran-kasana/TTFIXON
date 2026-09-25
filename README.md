@@ -2,9 +2,13 @@
 
 TTFixon is an on-demand service booking platform that connects customers with available service providers based on their location. The platform allows users to browse services, find nearby service providers, book services, and make online payments.
 
+
+
 ## 🌐 Live Website
 
-https://ttfixon.in/
+     https://ttfixon.in/
+
+     
 
 ## 📌 Features
 
@@ -20,32 +24,17 @@ https://ttfixon.in/
 - Responsive user interface
 - Database management with MongoDB
 
+
+
+  
+
 ## 🛠️ Tech Stack
 
-### Frontend
-- Next.js
-- React.js
-- JavaScript
-- HTML5
-- CSS3
-- Axios
-
-### Backend
-- Node.js
-- Express.js
-- REST APIs
-
-### Database
-- MongoDB
-
-### Payment
-- Razorpay
-
-### Tools
-- Git
-- GitHub
-- Postman
-- VS Code
+### Frontend : Next.js ,React.js ,JavaScript ,HTML5 ,CSS3, Axios
+### Backend : Node.js ,Express.js, REST APIs
+### Database: MongoDB
+### Payment : Razorpay
+### Tools :Git,GitHub ,Postman ,VS Code
 
 
 ## 🔐 Security
@@ -76,6 +65,29 @@ Payment history
 Analytics and reporting
 
 
+## 📂 Project Structure
+
+      TTFixon/
+      │
+      ├── frontend/
+      │   ├── components/
+      │   ├── pages/
+      │   ├── services/
+      │   ├── hooks/
+      │   └── ...
+      │
+      ├── backend/
+      │   ├── controllers/
+      │   ├── models/
+      │   ├── routes/
+      │   ├── middleware/
+      │   ├── services/
+      │   └── ...
+      │
+      ├── README.md
+      └── package.json
+
+
 
 ## 🏗️ Application Flow
 
@@ -103,26 +115,4 @@ Razorpay Payment
   ▼
 Booking Confirmation
 
-
-## 📂 Project Structure
-
-TTFixon/
-│
-├── frontend/
-│   ├── components/
-│   ├── pages/
-│   ├── services/
-│   ├── hooks/
-│   └── ...
-│
-├── backend/
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── middleware/
-│   ├── services/
-│   └── ...
-│
-├── README.md
-└── package.json
 
