@@ -77,7 +77,7 @@ Analytics and reporting
 🚀 Setup & Installation
 
 1. Clone the Repository
-2. git clone <YOUR_GITHUB_REPOSITORY_URLhttps://github.com/the-kiran-kasana/TTFIXON/>
+2. git clone <https://github.com/the-kiran-kasana/TTFIXON/>
 3. cd TTFixon
 4. cd frontend
 5. npm install
@@ -86,7 +86,7 @@ Analytics and reporting
 
 ▶️ Running the Project
                
-                 npm run dev
+    npm run dev
 ## 📂 Project Structure
 
       TTFixon/
