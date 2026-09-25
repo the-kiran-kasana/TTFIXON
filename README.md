@@ -72,3 +72,57 @@ Razorpay Payment
   │
   ▼
 Booking Confirmation
+
+
+## 📂 Project Structure
+
+TTFixon/
+│
+├── frontend/
+│   ├── components/
+│   ├── pages/
+│   ├── services/
+│   ├── hooks/
+│   └── ...
+│
+├── backend/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
+│   ├── services/
+│   └── ...
+│
+├── README.md
+└── package.json
+
+
+## 🔐 Security
+Authentication and authorization
+Environment variables for sensitive credentials
+Backend-side payment verification
+API validation
+Protected routes
+Secure database access
+
+
+🚧 Challenges
+
+One of the main technical challenges was implementing the complete booking and payment flow.
+
+The frontend had to communicate with the backend APIs, create the booking, initiate the Razorpay payment, verify the payment response, and update the booking status correctly.
+
+Another challenge was handling location-based service provider availability while keeping the user experience simple and responsive.
+
+
+###📈 Future Improvements
+
+Real-time booking status
+Real-time notifications
+Service provider mobile application
+Ratings and reviews
+Online chat between users and service providers
+Advanced search and filtering
+Improved location-based matching
+Payment history
+Analytics and reporting
